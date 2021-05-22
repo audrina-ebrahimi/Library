@@ -25,6 +25,9 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="toolTip">
+   <string/>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLineEdit" name="lineEdit">
     <property name="geometry">
@@ -123,7 +126,7 @@ color: rgb(236, 140, 23);</string>
        </property>
        <property name="styleSheet">
         <string notr="true">font: 75 8pt &quot;Segoe UI&quot;;
-background-color: rgb(202, 118, 45);
+background-color: rgb(231, 41, 7);
 color: rgb(0, 0, 0);</string>
        </property>
        <property name="frame">
@@ -160,7 +163,7 @@ color: rgb(236, 140, 23);</string>
        <property name="styleSheet">
         <string notr="true">font: 75 8pt &quot;Segoe UI&quot;;
 color: rgb(0, 0, 0);
-background-color: rgb(202, 118, 45);</string>
+background-color: rgb(231, 41, 7);</string>
        </property>
        <property name="frame">
         <bool>false</bool>
@@ -177,6 +180,27 @@ background-color: rgb(202, 118, 45);</string>
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QPushButton" name="log_in_Button">
+    <property name="geometry">
+     <rect>
+      <x>430</x>
+      <y>610</y>
+      <width>71</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;log in&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 8pt &quot;Mj_Parand&quot;;
+background-color: rgb(0, 0, 0);
+color: rgb(236, 140, 23);</string>
+    </property>
+    <property name="text">
+     <string>Log in</string>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

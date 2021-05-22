@@ -35,10 +35,48 @@
       <x>490</x>
       <y>330</y>
       <width>311</width>
-      <height>91</height>
+      <height>71</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="formLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_name">
+       <property name="font">
+        <font>
+         <family>Mj_Parand</family>
+         <pointsize>8</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 75 8pt &quot;Mj_Parand&quot;;
+background-color: rgb(255, 239, 11);
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="text">
+        <string> Username: </string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="lineEdit_name">
+       <property name="toolTip">
+        <string>Username</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 75 8pt &quot;Segoe UI&quot;;
+color: rgb(0, 0, 0);</string>
+       </property>
+       <property name="inputMask">
+        <string/>
+       </property>
+       <property name="placeholderText">
+        <string>Username</string>
+       </property>
+      </widget>
+     </item>
      <item row="2" column="0">
       <widget class="QLabel" name="label_pass">
        <property name="styleSheet">
@@ -77,44 +115,6 @@ color: rgb(0, 0, 0);</string>
        </property>
       </widget>
      </item>
-     <item row="0" column="1">
-      <widget class="QLineEdit" name="lineEdit_name">
-       <property name="toolTip">
-        <string>Username</string>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">font: 75 8pt &quot;Segoe UI&quot;;
-color: rgb(0, 0, 0);</string>
-       </property>
-       <property name="inputMask">
-        <string/>
-       </property>
-       <property name="placeholderText">
-        <string>Username</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="0">
-      <widget class="QLabel" name="label_name">
-       <property name="font">
-        <font>
-         <family>Mj_Parand</family>
-         <pointsize>8</pointsize>
-         <weight>9</weight>
-         <italic>false</italic>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">font: 75 8pt &quot;Mj_Parand&quot;;
-background-color: rgb(255, 239, 11);
-color: rgb(0, 0, 0);</string>
-       </property>
-       <property name="text">
-        <string> Username: </string>
-       </property>
-      </widget>
-     </item>
     </layout>
    </widget>
    <widget class="QLineEdit" name="lineEdit_3">
@@ -149,6 +149,31 @@ font: 20pt &quot;Snap ITC&quot;;
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="sign_up_Button">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>410</y>
+      <width>235</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:7pt;&quot;&gt;Sign up&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 0, 0);
+background-color: rgb(255, 209, 26);
+font: 18pt &quot;Tw Cen MT Condensed Extra Bold&quot;;
+</string>
+    </property>
+    <property name="text">
+     <string>Sign up</string>
     </property>
    </widget>
   </widget>
