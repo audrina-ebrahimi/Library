@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>log_in</class>
  <widget class="QMainWindow" name="log_in">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -28,23 +31,68 @@
   <property name="toolTip">
    <string/>
   </property>
+  <property name="styleSheet">
+   <string notr="true">#centralwidget
+{
+	border-image: url(:/new/photos/gates.jpg);
+}
+QPushButton
+{
+font: 75 8pt &quot;Mj_Parand&quot;;
+background-color: rgb(0, 0, 0);
+border-radius: 10px ;
+color: rgb(236, 140, 23);
+}
+QPushButton#closeButton
+{
+font: 75 8pt &quot;Mj_Parand&quot;;
+	background-color: rgb(236, 140, 23);
+border-radius: 10px ;
+color: rgb(236, 140, 23);
+}
+QPushButton#menuButton
+{
+font: 75 8pt &quot;Mj_Parand&quot;;
+	background-color: rgb(236, 140, 23);
+border-radius: 10px ;
+color: rgb(236, 140, 23);
+}
+QPushButton:hover 
+{ 
+color: white 
+}
+QPushButton:hover#closeButton
+{ 
+	background-color: rgb(199, 28, 10);
+}
+QPushButton:hover#menuButton
+{ 
+	background-color: rgb(199, 28, 10);
+}
+
+</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
    <widget class="QLineEdit" name="lineEdit">
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>240</x>
       <y>290</y>
-      <width>211</width>
+      <width>221</width>
       <height>31</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">color: rgb(236, 140, 23);
-background-color: rgb(0, 0, 0);
-font: 12pt &quot;Snap ITC&quot;;</string>
+background-color:rgb(0, 0, 0) ;
+font: 12pt &quot;Snap ITC&quot;;
+border-radius: 10px ;</string>
     </property>
     <property name="text">
-     <string>PASS THE GATE</string>
+     <string> PASS THE GATE </string>
     </property>
     <property name="frame">
      <bool>false</bool>
@@ -53,9 +101,9 @@ font: 12pt &quot;Snap ITC&quot;;</string>
    <widget class="QLineEdit" name="lineEdit_2">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>310</x>
       <y>330</y>
-      <width>131</width>
+      <width>151</width>
       <height>31</height>
      </rect>
     </property>
@@ -63,10 +111,11 @@ font: 12pt &quot;Snap ITC&quot;;</string>
      <string notr="true">color: rgb(236, 140, 23);
 border-color: rgb(170, 0, 0);
 background-color: rgb(0, 0, 0);
-font: 12pt &quot;Snap ITC&quot;;</string>
+font: 12pt &quot;Snap ITC&quot;;
+border-radius: 10px ;</string>
     </property>
     <property name="text">
-     <string>TO ENTER</string>
+     <string> TO ENTER </string>
     </property>
     <property name="frame">
      <bool>false</bool>
@@ -75,9 +124,9 @@ font: 12pt &quot;Snap ITC&quot;;</string>
    <widget class="QLineEdit" name="lineEdit_3">
     <property name="geometry">
      <rect>
-      <x>330</x>
+      <x>310</x>
       <y>370</y>
-      <width>201</width>
+      <width>211</width>
       <height>31</height>
      </rect>
     </property>
@@ -85,48 +134,84 @@ font: 12pt &quot;Snap ITC&quot;;</string>
      <string notr="true">color: rgb(236, 140, 23);
 border-color: rgb(170, 0, 0);
 background-color: rgb(0, 0, 0);
-font: 12pt &quot;Snap ITC&quot;;</string>
+font: 12pt &quot;Snap ITC&quot;;
+border-radius: 10px ;</string>
     </property>
     <property name="text">
-     <string>THE LIBRARY :)</string>
+     <string> THE LIBRARY :)</string>
     </property>
     <property name="frame">
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QWidget" name="verticalLayoutWidget">
+   <widget class="QWidget" name="formLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>490</y>
-      <width>91</width>
-      <height>113</height>
+      <x>550</x>
+      <y>410</y>
+      <width>271</width>
+      <height>181</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <item>
+    <layout class="QFormLayout" name="formLayout">
+     <item row="0" column="0">
       <widget class="QLabel" name="label_name">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>200</horstretch>
+         <verstretch>200</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>60</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Mj_Parand</family>
+         <pointsize>8</pointsize>
+         <weight>9</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
        <property name="styleSheet">
         <string notr="true">font: 75 8pt &quot;Mj_Parand&quot;;
 background-color: rgb(0, 0, 0);
-color: rgb(236, 140, 23);</string>
+color: rgb(236, 140, 23);
+border-radius: 10px ;</string>
        </property>
        <property name="text">
-        <string>Username</string>
+        <string> Username: </string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </item>
-     <item>
+     <item row="0" column="1">
       <widget class="QLineEdit" name="lineEdit_name">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>190</width>
+         <height>40</height>
+        </size>
+       </property>
        <property name="toolTip">
         <string>Username</string>
        </property>
        <property name="styleSheet">
         <string notr="true">font: 75 8pt &quot;Segoe UI&quot;;
-background-color: rgb(231, 41, 7);
+background-color: rgb(236, 140, 23);
+border-radius: 10px ;
 color: rgb(0, 0, 0);</string>
        </property>
        <property name="frame">
@@ -140,30 +225,51 @@ color: rgb(0, 0, 0);</string>
        </property>
       </widget>
      </item>
-     <item>
+     <item row="1" column="0">
       <widget class="QLabel" name="label_pass">
+       <property name="minimumSize">
+        <size>
+         <width>60</width>
+         <height>40</height>
+        </size>
+       </property>
        <property name="styleSheet">
         <string notr="true">font: 75 8pt &quot;Mj_Parand&quot;;
 background-color: rgb(0, 0, 0);
-color: rgb(236, 140, 23);</string>
+color: rgb(236, 140, 23);
+
+border-radius: 10px ;</string>
        </property>
        <property name="text">
-        <string>Password</string>
+        <string> Password:  </string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
        </property>
       </widget>
      </item>
-     <item>
+     <item row="1" column="1">
       <widget class="QLineEdit" name="lineEdit_pass">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>190</width>
+         <height>40</height>
+        </size>
+       </property>
        <property name="toolTip">
         <string>Password</string>
        </property>
        <property name="styleSheet">
         <string notr="true">font: 75 8pt &quot;Segoe UI&quot;;
 color: rgb(0, 0, 0);
-background-color: rgb(231, 41, 7);</string>
+background-color: rgb(236, 140, 23);
+border-radius: 10px ;</string>
        </property>
        <property name="frame">
         <bool>false</bool>
@@ -179,27 +285,107 @@ background-color: rgb(231, 41, 7);</string>
        </property>
       </widget>
      </item>
+     <item row="2" column="0" colspan="2">
+      <widget class="QPushButton" name="log_in_Button">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>200</horstretch>
+         <verstretch>40</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>266</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="toolTip">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;log in&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="text">
+        <string>Log in</string>
+       </property>
+       <property name="checkable">
+        <bool>false</bool>
+       </property>
+       <property name="flat">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
     </layout>
    </widget>
-   <widget class="QPushButton" name="log_in_Button">
+   <widget class="QPushButton" name="closeButton">
     <property name="geometry">
      <rect>
-      <x>430</x>
-      <y>610</y>
-      <width>71</width>
-      <height>25</height>
+      <x>1230</x>
+      <y>20</y>
+      <width>41</width>
+      <height>41</height>
      </rect>
     </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
     <property name="toolTip">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;log in&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>Close the app</string>
     </property>
     <property name="styleSheet">
-     <string notr="true">font: 75 8pt &quot;Mj_Parand&quot;;
-background-color: rgb(0, 0, 0);
-color: rgb(236, 140, 23);</string>
+     <string notr="true"/>
     </property>
     <property name="text">
-     <string>Log in</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="icons.qrc">
+      <normaloff>:/icons/icons/error.png</normaloff>:/icons/icons/error.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>30</width>
+      <height>30</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="menuButton">
+    <property name="geometry">
+     <rect>
+      <x>1180</x>
+      <y>20</y>
+      <width>41</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="toolTip">
+     <string>Back to main menu</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="icons.qrc">
+      <normaloff>:/icons/icons/previous.png</normaloff>:/icons/icons/previous.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>30</width>
+      <height>30</height>
+     </size>
     </property>
    </widget>
   </widget>
@@ -213,8 +399,9 @@ color: rgb(236, 140, 23);</string>
     </rect>
    </property>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <resources>
+  <include location="icons.qrc"/>
+ </resources>
  <connections/>
 </ui>

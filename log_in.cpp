@@ -6,10 +6,14 @@ log_in::log_in(QWidget *parent) :
     ui(new Ui::log_in)
 {
     ui->setupUi(this);
-    this->setStyleSheet("QMainWindow {border-image: url(:new/photos/gates.jpg);}");
 }
 
 log_in::~log_in()
 {
     delete ui;
+}
+
+void log_in::on_closeButton_clicked()
+{
+    this->close();
 }
