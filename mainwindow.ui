@@ -233,38 +233,6 @@ background-color: rgb(63, 92, 200,0.7);</string>
      </size>
     </property>
    </widget>
-   <widget class="QPushButton" name="menuButton">
-    <property name="geometry">
-     <rect>
-      <x>1180</x>
-      <y>30</y>
-      <width>41</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="cursor">
-     <cursorShape>PointingHandCursor</cursorShape>
-    </property>
-    <property name="toolTip">
-     <string>Back to main menu</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">border-radius: 10px ;</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset resource="icons.qrc">
-      <normaloff>:/icons/icons/previous.png</normaloff>:/icons/icons/previous.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>30</width>
-      <height>30</height>
-     </size>
-    </property>
-   </widget>
    <zorder>lineEdit_2</zorder>
    <zorder>lineEdit</zorder>
    <zorder>login_Button</zorder>
@@ -272,7 +240,6 @@ background-color: rgb(63, 92, 200,0.7);</string>
    <zorder>label</zorder>
    <zorder>label_2</zorder>
    <zorder>closeButton</zorder>
-   <zorder>menuButton</zorder>
   </widget>
  </widget>
  <tabstops>

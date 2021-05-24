@@ -18,6 +18,10 @@ public:
 private slots:
     void on_closeButton_clicked();
 
+    void on_login_Button_clicked();
+
+    void on_signup_Button_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
