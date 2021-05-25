@@ -134,8 +134,11 @@ border-radius: 10px ;</string>
        <property name="inputMask">
         <string/>
        </property>
+       <property name="maxLength">
+        <number>10</number>
+       </property>
        <property name="placeholderText">
-        <string>Username</string>
+        <string>Username : Max length 10 characters</string>
        </property>
       </widget>
      </item>
@@ -198,11 +201,14 @@ border-radius: 10px ;</string>
        <property name="inputMask">
         <string/>
        </property>
+       <property name="maxLength">
+        <number>5</number>
+       </property>
        <property name="echoMode">
         <enum>QLineEdit::Password</enum>
        </property>
        <property name="placeholderText">
-        <string>Password</string>
+        <string>Password : : Max length 5 characters</string>
        </property>
       </widget>
      </item>
