@@ -5,7 +5,7 @@
 #include <QMessageBox>
 #include "overload.h"
 #include "sign_up.h"
-#include "userdashboard.h"
+#include "choose_gender.h"
 log_in::log_in(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::log_in)
@@ -49,8 +49,9 @@ void log_in::on_log_in_Button_clicked()
         line = in.readLine();
         if(line.contains(person.get_name() , Qt :: CaseSensitive) && line.contains(person.get_pass() , Qt :: CaseSensitive))
         {
-            userdashboard * dash = new userdashboard;
-            dash->show();
+            choose_gender * choose = new choose_gender;
+            choose->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+            choose->show();
             this->close();
             check_find = true;
             break;

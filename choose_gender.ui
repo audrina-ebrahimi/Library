@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>choose_gender</class>
+ <widget class="QMainWindow" name="choose_gender">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1296</width>
+    <height>762</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1296</width>
+    <height>762</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1296</width>
+    <height>762</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#centralwidget
+{
+	border-image: url(:/new/photos/choose.jpg);
+}
+QRadioButton#girl_Button
+{
+	border-radius: 20px;	
+	color: rgb(44, 102, 185);
+	background-color: &quot;#95f4f6&quot;;
+}
+QRadioButton#boy_Button
+{
+	border-radius: 20px;	
+	color: rgb(156, 32, 43);	
+	background-color: &quot;#d785ab&quot;;
+}
+QRadioButton#girl_Button:hover
+{
+	border-radius: 20px;
+	color: &quot;#95f4f6&quot;;
+	;
+	background-color: rgb(67, 139, 223);
+}
+QRadioButton#boy_Button:hover
+{
+	border-radius: 20px;	
+	color: #d785ab;
+	background-color:rgb(156, 32, 43) ;
+}
+
+
+QPushButton
+{
+	background-color: rgb(213, 116, 174);
+    border-radius: 20px;
+}
+QPushButton:hover
+{
+	background-color:  rgb(156, 32, 43);
+}
+</string>
+  </property>
+  <property name="tabShape">
+   <enum>QTabWidget::Rounded</enum>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QRadioButton" name="girl_Button">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>500</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <italic>true</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="text">
+     <string>HOT GIRL</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="boy_Button">
+    <property name="geometry">
+     <rect>
+      <x>830</x>
+      <y>500</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <italic>true</italic>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="text">
+     <string>HOT BOY</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="closeButton">
+    <property name="geometry">
+     <rect>
+      <x>1220</x>
+      <y>20</y>
+      <width>51</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="toolTip">
+     <string>Close the app</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="icons.qrc">
+      <normaloff>:/icons/icons/error.png</normaloff>:/icons/icons/error.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>40</width>
+      <height>40</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="menuButton">
+    <property name="geometry">
+     <rect>
+      <x>1160</x>
+      <y>20</y>
+      <width>51</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="toolTip">
+     <string>Back to main menu</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="icons.qrc">
+      <normaloff>:/icons/icons/previous.png</normaloff>:/icons/icons/previous.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>40</width>
+      <height>40</height>
+     </size>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>40</y>
+      <width>411</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: &quot;#d785ab&quot;;
+font: 30pt &quot;Snap ITC&quot;;
+
+</string>
+    </property>
+    <property name="text">
+     <string>Choose your</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>670</x>
+      <y>30</y>
+      <width>381</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: &quot;#95f4f6&quot;;
+font: 30pt &quot;Snap ITC&quot;;
+
+</string>
+    </property>
+    <property name="text">
+     <string>preferences!</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources>
+  <include location="icons.qrc"/>
+ </resources>
+ <connections/>
+</ui>
