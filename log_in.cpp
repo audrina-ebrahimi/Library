@@ -6,6 +6,7 @@
 #include "overload.h"
 #include "sign_up.h"
 #include "choose_gender.h"
+#include "admindashboard.h"
 log_in::log_in(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::log_in)
@@ -49,6 +50,13 @@ void log_in::on_log_in_Button_clicked()
         line = in.readLine();
         if(line.contains(person.get_name() , Qt :: CaseSensitive) && line.contains(person.get_pass() , Qt :: CaseSensitive))
         {
+            if(person.get_name() == "admin" && person.get_pass() == "admin")
+            {
+                admindashboard *admin = new admindashboard;
+                admin->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+                admin->show();
+                this->close();
+            }
             choose_gender * choose = new choose_gender;
             choose->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
             choose->show();
