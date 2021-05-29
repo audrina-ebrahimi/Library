@@ -57,7 +57,7 @@ void log_in::on_log_in_Button_clicked()
                 admin->show();
                 this->close();
             }
-            choose_gender * choose = new choose_gender;
+            choose_gender * choose = new choose_gender(person.get_name());
             choose->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
             choose->show();
             this->close();

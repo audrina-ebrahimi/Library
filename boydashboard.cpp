@@ -2,11 +2,17 @@
 #include "ui_boydashboard.h"
 #include "log_in.h"
 #include "mainwindow.h"
-boydashboard::boydashboard(QWidget *parent) :
+boydashboard::boydashboard(QString user , QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::boydashboard)
 {
     ui->setupUi(this);
+    this->user = user;
+}
+
+QString boydashboard::get_user()
+{
+    return this->user;
 }
 
 boydashboard::~boydashboard()

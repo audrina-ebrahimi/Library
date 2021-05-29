@@ -12,7 +12,8 @@ class choose_gender : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit choose_gender(QWidget *parent = nullptr);
+    explicit choose_gender(QString user , QWidget *parent = nullptr);
+    QString getUser();
     ~choose_gender();
 
 private slots:
@@ -22,8 +23,11 @@ private slots:
 
     void on_girl_Button_clicked();
 
+    void on_boy_Button_clicked();
+
 private:
     Ui::choose_gender *ui;
+    QString user;
 };
 
 #endif // CHOOSE_GENDER_H

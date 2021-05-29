@@ -280,6 +280,9 @@ border-radius: 40px;
       <height>41</height>
      </rect>
     </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
     <property name="toolTip">
      <string>Close the app</string>
     </property>
@@ -308,6 +311,9 @@ border-radius: 40px;
       <width>41</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="toolTip">
      <string>Back to main menu</string>

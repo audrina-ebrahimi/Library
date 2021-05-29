@@ -12,7 +12,8 @@ class userdashboard : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit userdashboard(QWidget *parent = nullptr);
+    explicit userdashboard(QString user , QWidget *parent = nullptr);
+    QString get_user();
     ~userdashboard();
 
 private slots:
@@ -24,6 +25,7 @@ private slots:
 
 private:
     Ui::userdashboard *ui;
+    QString user;
 };
 
 #endif // USERDASHBOARD_H
