@@ -44,26 +44,6 @@ QPushButton:hover
 }
 
 
-QPushButton#closeButton
-{
-	border-radius: 10px;
-	background-color: rgb(182, 122, 238);
-
-}
-QPushButton#menuButton
-{
-	border-radius: 10px;
-	background-color: rgb(182, 122, 238);
-}
-
-QPushButton:hover#closeButton
-{ 
-	background-color: rgb(54, 209, 229);
-}
-QPushButton:hover#menuButton
-{ 
-	background-color: rgb(54, 209, 229);
-}
 </string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -83,7 +63,7 @@ QPushButton:hover#menuButton
      <string>Close the app</string>
     </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">border-radius: 10px;</string>
     </property>
     <property name="text">
      <string/>
@@ -115,7 +95,7 @@ QPushButton:hover#menuButton
      <string>Back to main menu</string>
     </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">border-radius: 10px;</string>
     </property>
     <property name="text">
      <string/>
@@ -144,7 +124,9 @@ QPushButton:hover#menuButton
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius: 55px;</string>
+     <string notr="true">border-radius: 55px;
+border: 3px solid rgb(0, 0, 255);
+</string>
     </property>
     <property name="text">
      <string>Log out</string>
@@ -162,6 +144,9 @@ QPushButton:hover#menuButton
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
+    <property name="styleSheet">
+     <string notr="true">border: 3px solid rgb(0, 0, 255);</string>
+    </property>
     <property name="text">
      <string>View Books</string>
     </property>
@@ -178,6 +163,9 @@ QPushButton:hover#menuButton
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
+    <property name="styleSheet">
+     <string notr="true">border: 3px solid rgb(0, 0, 255);</string>
+    </property>
     <property name="text">
      <string>Get/Return Books</string>
     </property>
@@ -193,6 +181,9 @@ QPushButton:hover#menuButton
     </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 3px solid rgb(0, 0, 255);</string>
     </property>
     <property name="text">
      <string>Private Room :)</string>

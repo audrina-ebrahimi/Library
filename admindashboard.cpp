@@ -2,11 +2,28 @@
 #include "ui_admindashboard.h"
 #include "mainwindow.h"
 #include "log_in.h"
-admindashboard::admindashboard(QWidget *parent) :
+#include "groupbooks.h"
+#include "view_booklist.h"
+#include "viewmember.h"
+admindashboard::admindashboard(QWidget * login , QWidget * main , QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::admindashboard)
 {
     ui->setupUi(this);
+    this->qMain = main;
+    this->login = login;
+}
+
+void admindashboard::mousePressEvent(QMouseEvent *event)
+{
+    oldPos = event->globalPosition();
+}
+
+void admindashboard::mouseMoveEvent(QMouseEvent *event)
+{
+    const QPointF delta = event->globalPosition() - oldPos;
+    move(x() + delta.x() , y() + delta.y());
+    oldPos = event->globalPosition();
 }
 
 admindashboard::~admindashboard()
@@ -22,16 +39,38 @@ void admindashboard::on_closeButton_clicked()
 
 void admindashboard::on_menuButton_clicked()
 {
-    MainWindow *main = new MainWindow;
-    main->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     main->show();
     this->close();
 }
 
 void admindashboard::on_logoutButton_clicked()
 {
-    log_in *log = new log_in;
-    log->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
-    log->show();
+    login->show();
     this->close();
 }
+
+void admindashboard::on_groupButton_clicked()
+{
+    GroupBooks *group = new GroupBooks(this , qMain);
+    group->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    group->show();
+    this->close();
+
+}
+
+void admindashboard::on_viewBookButton_clicked()
+{
+    view_booklist *list = new view_booklist(this , qMain);
+    list->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    list->show();
+    this->close();
+}
+
+void admindashboard::on_viewMemButton_clicked()
+{
+    viewMember *member = new viewMember(this , qMain);
+    member->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    member->show();
+    this->close();
+}
+

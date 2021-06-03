@@ -37,7 +37,7 @@ QPushButton
 {
 color: rgb(0, 0, 0);
 background-color: rgb(255, 209, 26);
-font: 18pt &quot;Tw Cen MT Condensed Extra Bold&quot;;
+font: 20pt &quot;Tw Cen MT Condensed Extra Bold&quot;;
 border-radius: 30px;
 }
 QPushButton:hover
@@ -94,7 +94,7 @@ QPushButton:hover#menuButton
        <property name="font">
         <font>
          <family>Mj_Parand</family>
-         <pointsize>8</pointsize>
+         <pointsize>10</pointsize>
          <weight>9</weight>
          <italic>false</italic>
          <bold>false</bold>
@@ -102,7 +102,7 @@ QPushButton:hover#menuButton
        </property>
        <property name="styleSheet">
         <string notr="true">border-radius: 10px ;
-font: 75 8pt &quot;Mj_Parand&quot;;
+font: 75 10pt &quot;Mj_Parand&quot;;
 background-color: rgb(255, 239, 11);
 color: rgb(0, 0, 0);
 </string>
@@ -157,7 +157,7 @@ border-radius: 10px ;</string>
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">font: 75 8pt &quot;Mj_Parand&quot;;
+        <string notr="true">font: 75 10pt &quot;Mj_Parand&quot;;
 background-color: rgb(255, 239, 11);
 color: rgb(0, 0, 0);
 border-radius: 10px ;</string>
@@ -231,8 +231,8 @@ border-radius: 10px ;</string>
     </property>
     <property name="styleSheet">
      <string notr="true">color: rgb(0, 0, 0);
-background-color: rgb(255, 209, 26,0.7);
-font: 20pt &quot;Snap ITC&quot;;
+background-color: rgba(255, 209, 26,0.7);
+font: 24pt &quot;Snap ITC&quot;;
 border-radius: 40px;
 </string>
     </property>

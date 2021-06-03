@@ -2,12 +2,27 @@
 #include "ui_boydashboard.h"
 #include "log_in.h"
 #include "mainwindow.h"
-boydashboard::boydashboard(QString user , QWidget *parent) :
+#include "viewboy.h"
+boydashboard::boydashboard(QWidget * login , QWidget * main , QString user , QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::boydashboard)
 {
     ui->setupUi(this);
     this->user = user;
+    this->qMain = main;
+    this->login = login;
+}
+
+void boydashboard::mousePressEvent(QMouseEvent *event)
+{
+    oldPos = event->globalPosition();
+}
+
+void boydashboard::mouseMoveEvent(QMouseEvent *event)
+{
+    const QPointF delta = event->globalPosition() - oldPos;
+    move(x() + delta.x() , y() + delta.y());
+    oldPos = event->globalPosition();
 }
 
 QString boydashboard::get_user()
@@ -15,16 +30,15 @@ QString boydashboard::get_user()
     return this->user;
 }
 
+
 boydashboard::~boydashboard()
 {
     delete ui;
 }
 
 void boydashboard::on_logoutButton_clicked()
-{
-    log_in *log = new log_in;
-    log->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
-    log->show();
+{   
+    login->show();
     this->close();
 }
 
@@ -35,8 +49,15 @@ void boydashboard::on_closeButton_clicked()
 
 void boydashboard::on_menuButton_clicked()
 {
-    MainWindow *main = new MainWindow;
-    main->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     main->show();
     this->close();
 }
+
+void boydashboard::on_listButton_clicked()
+{
+    viewboy *view = new viewboy(this , qMain);
+    view->setWindowFlags(Qt::Window | Qt:: FramelessWindowHint);
+    view->show();
+    this->close();
+}
+

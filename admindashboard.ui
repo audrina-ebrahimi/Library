@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>admindashboard</class>
  <widget class="QMainWindow" name="admindashboard">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -34,7 +37,7 @@ QPushButton
 {
     color:  rgb(35, 123, 133);	
 	background-color: rgb(245, 243, 213);
-    font: 18pt &quot;Tw Cen MT Condensed Extra Bold&quot;;
+    font: 22pt &quot;Tw Cen MT Condensed Extra Bold&quot;;
     border-radius: 30px;
 }
 QPushButton:hover

@@ -46,7 +46,6 @@ QRadioButton#girl_Button:hover
 {
 	border-radius: 20px;
 	color: &quot;#95f4f6&quot;;
-	;
 	background-color: rgb(67, 139, 223);
 }
 QRadioButton#boy_Button:hover
@@ -83,9 +82,11 @@ QPushButton:hover
     </property>
     <property name="font">
      <font>
+      <pointsize>11</pointsize>
       <weight>75</weight>
       <italic>true</italic>
       <bold>true</bold>
+      <strikeout>false</strikeout>
      </font>
     </property>
     <property name="cursor">
@@ -106,6 +107,7 @@ QPushButton:hover
     </property>
     <property name="font">
      <font>
+      <pointsize>11</pointsize>
       <weight>75</weight>
       <italic>true</italic>
       <bold>true</bold>

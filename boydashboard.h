@@ -2,7 +2,7 @@
 #define BOYDASHBOARD_H
 
 #include <QMainWindow>
-
+#include <QMouseEvent>
 namespace Ui {
 class boydashboard;
 }
@@ -12,20 +12,33 @@ class boydashboard : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit boydashboard(QString user , QWidget *parent = nullptr);
+    explicit boydashboard(QWidget * login , QWidget * main , QString user , QWidget *parent = nullptr);
+
+    void mousePressEvent (QMouseEvent * event);
+
+    void mouseMoveEvent (QMouseEvent * event);
+
     QString get_user();
     ~boydashboard();
 
 private slots:
+
+
+
     void on_logoutButton_clicked();
 
     void on_closeButton_clicked();
 
     void on_menuButton_clicked();
 
+    void on_listButton_clicked();
+
 private:
     Ui::boydashboard *ui;
+    QPointF oldPos;
     QString user;
+    QWidget * main;
+    QWidget * login;
 };
 
 #endif // BOYDASHBOARD_H

@@ -10,11 +10,24 @@
 #include <QVector>
 #include <QtDebug>
 
-sign_up::sign_up(QWidget *parent) :
+sign_up::sign_up(QWidget * main , QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::sign_up)
 {
     ui->setupUi(this);
+    this->qMain = main;
+}
+
+void sign_up::mousePressEvent(QMouseEvent *event)
+{
+    oldPos = event->globalPosition();
+}
+
+void sign_up::mouseMoveEvent(QMouseEvent *event)
+{
+    const QPointF delta = event->globalPosition() - oldPos;
+    move(x() + delta.x() , y() + delta.y());
+    oldPos = event->globalPosition();
 }
 
 sign_up::~sign_up()
@@ -29,8 +42,6 @@ void sign_up::on_closeButton_clicked()
 
 void sign_up::on_menuButton_clicked()
 {
-    MainWindow *main = new MainWindow;
-    main->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     main->show();
     this->close();
 }
@@ -65,11 +76,11 @@ void sign_up::on_sign_up_Button_clicked()
             warn.setDefaultButton(QMessageBox::Ok);
             warn.button(QMessageBox::Ok)->setCursor(Qt::PointingHandCursor);
 
-            warn.setStyleSheet("QPushButton{ width:100px; height:30px; background-color: rgb(255, 209, 26); color: black; border-radius:10px;}"
+            warn.setStyleSheet("QPushButton{ width:100px; height:30px; background-color: rgb(255, 209, 26); color: black; border-radius:10px; }"
 
                                "QPushButton:hover{ background-color: black; color: rgb(255, 209, 26);}"
 
-                               "QMessageBox{background-color: rgb(255,183,0,0.7);font:12pt Tw Cen MT Condensed Extra Bold;}");
+                               "QMessageBox{background-color: rgba(255,183,0,0.7);font:12pt Tw Cen MT Condensed Extra Bold;}");
             warn.exec();
             ui->lineEdit_name->clear();
             ui->lineEdit_pass->clear();
@@ -106,10 +117,10 @@ void sign_up::on_sign_up_Button_clicked()
 
                            "QPushButton:hover{ background-color: black; color: rgb(255, 209, 26);}"
 
-                           "QMessageBox{background-color: rgb(255,183,0,0.7);font:12pt Tw Cen MT Condensed Extra Bold;}");
+                           "QMessageBox{background-color: rgba(255,183,0,0.7);font:12pt Tw Cen MT Condensed Extra Bold;}");
         if(success.exec() == QMessageBox::Ok)
         {
-                log_in * log = new log_in;
+                log_in * log = new log_in(this);
                 log->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
                 log->show();
                 this->close();

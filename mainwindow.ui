@@ -25,6 +25,12 @@
     <height>762</height>
    </size>
   </property>
+  <property name="sizeIncrement">
+   <size>
+    <width>0</width>
+    <height>0</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
@@ -40,7 +46,7 @@ QPushButton
 {
 background-color:rgb(0, 208, 255);
 color: rgb(0, 0, 0);
-font: 18pt &quot;Tw Cen MT Condensed Extra Bold&quot;;
+font: 20pt &quot;Tw Cen MT Condensed Extra Bold&quot;;
 border-radius: 40px;
 }
 
@@ -48,7 +54,14 @@ QPushButton:hover
 {
 	background-color: rgb(17, 50, 110);
 	color: rgb(255, 255, 255);
-}</string>
+}
+QLineEdit
+{
+border-radius: 40px;
+background-color: rgba(63, 92, 200 , 0.7);
+}
+
+</string>
   </property>
   <property name="documentMode">
    <bool>false</bool>
@@ -85,7 +98,7 @@ QPushButton:hover
      <string notr="true"/>
     </property>
     <property name="text">
-     <string>LOG IN</string>
+     <string>&amp;LOG IN</string>
     </property>
    </widget>
    <widget class="QPushButton" name="signup_Button">
@@ -103,7 +116,7 @@ QPushButton:hover
     <property name="font">
      <font>
       <family>Tw Cen MT Condensed Extra Bold</family>
-      <pointsize>18</pointsize>
+      <pointsize>20</pointsize>
       <weight>50</weight>
       <italic>false</italic>
       <bold>false</bold>
@@ -119,7 +132,7 @@ QPushButton:hover
      <string notr="true"/>
     </property>
     <property name="text">
-     <string>SIGN UP</string>
+     <string>&amp;SIGN UP</string>
     </property>
    </widget>
    <widget class="QLabel" name="label">
@@ -134,7 +147,7 @@ QPushButton:hover
     <property name="font">
      <font>
       <family>Snap ITC</family>
-      <pointsize>26</pointsize>
+      <pointsize>32</pointsize>
       <weight>50</weight>
       <italic>false</italic>
       <bold>false</bold>
@@ -142,7 +155,7 @@ QPushButton:hover
     </property>
     <property name="styleSheet">
      <string notr="true">color: rgb(236, 140, 23);
-font: 26pt &quot;Snap ITC&quot;;
+font: 32pt &quot;Snap ITC&quot;;
 
 </string>
     </property>
@@ -157,15 +170,15 @@ font: 26pt &quot;Snap ITC&quot;;
     <property name="geometry">
      <rect>
       <x>390</x>
-      <y>260</y>
+      <y>270</y>
       <width>581</width>
-      <height>131</height>
+      <height>111</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">
 color: rgb(236, 140, 23);
-font: 26pt &quot;Snap ITC&quot;;
+font: 32pt &quot;Snap ITC&quot;;
 
 </string>
     </property>
@@ -183,8 +196,7 @@ font: 26pt &quot;Snap ITC&quot;;
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius: 40px;
-background-color: rgb(63, 92, 200,0.7);</string>
+     <string notr="true"/>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit_2">
@@ -197,8 +209,7 @@ background-color: rgb(63, 92, 200,0.7);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius: 40px;
-background-color: rgb(63, 92, 200,0.7);</string>
+     <string notr="true"/>
     </property>
    </widget>
    <widget class="QPushButton" name="closeButton">

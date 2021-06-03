@@ -7,11 +7,25 @@
 #include "sign_up.h"
 #include "choose_gender.h"
 #include "admindashboard.h"
-log_in::log_in(QWidget *parent) :
+log_in::log_in( QWidget * main , QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::log_in)
 {
     ui->setupUi(this);
+    this->qMain = main;
+
+}
+
+void log_in::mousePressEvent(QMouseEvent *event)
+{
+    oldPos = event->globalPosition();
+}
+
+void log_in::mouseMoveEvent(QMouseEvent *event)
+{
+    const QPointF delta = event->globalPosition() - oldPos;
+    move(x() + delta.x() , y() + delta.y());
+    oldPos = event->globalPosition();
 }
 
 log_in::~log_in()
@@ -26,8 +40,6 @@ void log_in::on_closeButton_clicked()
 
 void log_in::on_menuButton_clicked()
 {
-    MainWindow *main = new MainWindow;
-    main->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     main->show();
     this->close();
 }
@@ -52,15 +64,21 @@ void log_in::on_log_in_Button_clicked()
         {
             if(person.get_name() == "admin" && person.get_pass() == "admin")
             {
-                admindashboard *admin = new admindashboard;
+                admindashboard *admin = new admindashboard(this , qMain);
                 admin->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
                 admin->show();
                 this->close();
+                ui->lineEdit_pass->clear();
+                ui->lineEdit_name->clear();
+                check_find = true;
+                break;
             }
-            choose_gender * choose = new choose_gender(person.get_name());
+            choose_gender * choose = new choose_gender(this , qMain , person.get_name());
             choose->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
             choose->show();
             this->close();
+            ui->lineEdit_pass->clear();
+            ui->lineEdit_name->clear();
             check_find = true;
             break;
         }
@@ -81,7 +99,7 @@ void log_in::on_log_in_Button_clicked()
 
                                "QPushButton:hover{ background-color: black; color: rgb(255, 209, 26);}"
 
-                               "QMessageBox{background-color: rgb(255,183,0,0.7);font:12pt Tw Cen MT Condensed Extra Bold;}");
+                               "QMessageBox{background-color: rgba(255,183,0,0.7);font:12pt Tw Cen MT Condensed Extra Bold;}");
             warn.exec();
             ui->lineEdit_pass->clear();
             check_find = true;
@@ -106,10 +124,10 @@ void log_in::on_log_in_Button_clicked()
 
                            "QPushButton:hover{ background-color: black; color: rgb(255, 209, 26);}"
 
-                           "QMessageBox{background-color: rgb(255,183,0,0.7);font:12pt Tw Cen MT Condensed Extra Bold;}");
+                           "QMessageBox{background-color: rgba(255,183,0,0.7);font:12pt Tw Cen MT Condensed Extra Bold;}");
         if(failed.exec() == QMessageBox::Ok)
         {
-                sign_up * sign = new sign_up;
+                sign_up * sign = new sign_up(qMain);
                 sign->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
                 sign->show();
                 this->close();
