@@ -37,6 +37,8 @@ private slots:
 
     void on_viewMemButton_clicked();
 
+    void on_addButton_clicked();
+
 private:
     Ui::admindashboard *ui;
     QWidget  *main;

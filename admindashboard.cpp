@@ -5,6 +5,7 @@
 #include "groupbooks.h"
 #include "view_booklist.h"
 #include "viewmember.h"
+#include "addbook.h"
 admindashboard::admindashboard(QWidget * login , QWidget * main , QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::admindashboard)
@@ -54,7 +55,7 @@ void admindashboard::on_groupButton_clicked()
     GroupBooks *group = new GroupBooks(this , qMain);
     group->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     group->show();
-    this->close();
+    this->hide();
 
 }
 
@@ -63,7 +64,7 @@ void admindashboard::on_viewBookButton_clicked()
     view_booklist *list = new view_booklist(this , qMain);
     list->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     list->show();
-    this->close();
+    this->hide();
 }
 
 void admindashboard::on_viewMemButton_clicked()
@@ -71,6 +72,16 @@ void admindashboard::on_viewMemButton_clicked()
     viewMember *member = new viewMember(this , qMain);
     member->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     member->show();
-    this->close();
+    this->hide();
+}
+
+
+void admindashboard::on_addButton_clicked()
+{
+    addBook * add = new addBook(this , qMain);
+    add->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    add->show();
+    this->hide();
+
 }
 

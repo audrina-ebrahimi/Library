@@ -185,7 +185,7 @@ background-color: rgba(170, 255, 0 , 0.8);
      <enum>QAbstractItemView::ScrollPerItem</enum>
     </property>
     <property name="sortingEnabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <attribute name="horizontalHeaderCascadingSectionResizes">
      <bool>true</bool>

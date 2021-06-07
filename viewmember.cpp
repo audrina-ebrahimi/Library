@@ -12,29 +12,6 @@ viewMember::viewMember(QWidget * admin , QWidget * main , QWidget *parent) :
     ui->setupUi(this);
     this->qMain = main;
     this->admin = admin;
-
-
-//    QFile myfile("F:/Qt/Library/name_pass.txt");
-//    myfile.open(QIODevice :: ReadOnly);
-//    QTextStream in(&myfile);
-
-
-
-//    while(!in.atEnd())
-//    {
-//       QStringList line = in.readLine().split(" ");
-//       user_pass[line[0]] = line[1];
-//    }
-
-//    int j=0;
-//    for(auto i=user_pass.begin() ; i != user_pass.end() ; i++)
-//    {
-//        ui->tableWidget->insertRow(ui->tableWidget->rowCount());
-//        ui->tableWidget->setItem(j,0, new QTableWidgetItem(i.key()));
-//        ui->tableWidget->setItem(j,1, new QTableWidgetItem(i.value()));
-//        j++;
-//    }
-//    ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
     update();
 }
 void viewMember::update()
@@ -61,6 +38,7 @@ void viewMember::update()
         j++;
     }
     ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
+    myfile.close();
 }
 void viewMember::mousePressEvent(QMouseEvent *event)
 {
