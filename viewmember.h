@@ -34,6 +34,8 @@ private slots:
 
     void on_deleteButton_clicked();
 
+    void on_lineEdit_textChanged(const QString &arg1);
+
 private:
     Ui::viewMember *ui;
     QPointF oldPos;

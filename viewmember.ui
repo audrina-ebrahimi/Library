@@ -172,6 +172,9 @@ background-color: rgba(170, 255, 0 , 0.8);
     <property name="horizontalScrollBarPolicy">
      <enum>Qt::ScrollBarAlwaysOn</enum>
     </property>
+    <property name="alternatingRowColors">
+     <bool>true</bool>
+    </property>
     <property name="selectionMode">
      <enum>QAbstractItemView::SingleSelection</enum>
     </property>
@@ -244,6 +247,26 @@ background-color: rgba(170, 255, 0 , 0.8);
       <set>AlignCenter</set>
      </property>
     </column>
+   </widget>
+   <widget class="QLineEdit" name="lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>70</x>
+      <y>150</y>
+      <width>201</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(75, 70, 0);
+	background-color: rgb(196, 255, 3);
+	font: 20pt &quot;Tw Cen MT Condensed Extra Bold&quot;;
+    border-radius: 10px;
+</string>
+    </property>
+    <property name="placeholderText">
+     <string>Looking for?</string>
+    </property>
    </widget>
   </widget>
  </widget>

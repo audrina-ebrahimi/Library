@@ -5,6 +5,7 @@
 #include <QFile>
 #include <QMap>
 #include <QMessageBox>
+#include <QCompleter>
 viewMember::viewMember(QWidget * admin , QWidget * main , QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::viewMember)
@@ -28,6 +29,11 @@ void viewMember::update()
        QStringList line = in.readLine().split(" ");
        user_pass[line[0]] = line[1];
     }
+
+    QCompleter * complete = new QCompleter(user_pass.keys(),this);
+    complete->setCaseSensitivity(Qt::CaseInsensitive);
+    ui->lineEdit->setCompleter(complete);
+
 
     int j=0;
     for(auto i=user_pass.begin() ; i != user_pass.end() ; i++)
@@ -108,5 +114,24 @@ void viewMember::on_deleteButton_clicked()
         out << i.key() << " " << i.value() << "\n";
 
     update();
+}
+
+
+void viewMember::on_lineEdit_textChanged(const QString &arg1)
+{
+    if(arg1 == "")
+        for(int i=0 ; i<ui->tableWidget->rowCount() ; i++)
+            ui->tableWidget->showRow(i);
+    else
+        for(int i=0 ; i<ui->tableWidget->rowCount() ; i++)
+        {
+            if(ui->tableWidget->item(i,0)->text().startsWith(arg1 , Qt::CaseInsensitive))
+                ui->tableWidget->showRow(i);
+            else
+                ui->tableWidget->hideRow(i);
+        }
+
+
+
 }
 
