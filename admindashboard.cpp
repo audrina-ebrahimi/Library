@@ -6,6 +6,7 @@
 #include "view_booklist.h"
 #include "viewmember.h"
 #include "addbook.h"
+#include "preedit.h"
 admindashboard::admindashboard(QWidget * login , QWidget * main , QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::admindashboard)
@@ -40,7 +41,7 @@ void admindashboard::on_closeButton_clicked()
 
 void admindashboard::on_menuButton_clicked()
 {
-    main->show();
+    qMain->show();
     this->close();
 }
 
@@ -83,5 +84,14 @@ void admindashboard::on_addButton_clicked()
     add->show();
     this->hide();
 
+}
+
+
+void admindashboard::on_editButton_clicked()
+{
+    preEdit *pre = new preEdit(this , qMain);
+    pre->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    pre->show();
+    this->hide();
 }
 

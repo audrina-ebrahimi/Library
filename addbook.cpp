@@ -4,7 +4,6 @@
 #include <QFile>
 #include "overload.h"
 #include <QMessageBox>
-#include <QDebug>
 #include "editbook.h"
 addBook::addBook(QWidget * dash , QWidget * main , QWidget *parent) :
     QMainWindow(parent),
@@ -14,7 +13,17 @@ addBook::addBook(QWidget * dash , QWidget * main , QWidget *parent) :
     this->qMain = main;
     this->dash = dash;
 }
+void addBook::mousePressEvent(QMouseEvent *event)
+{
+    oldPos = event->globalPosition();
+}
 
+void addBook::mouseMoveEvent(QMouseEvent *event)
+{
+    const QPointF delta = event->globalPosition() - oldPos;
+    move(x() + delta.x() , y() + delta.y());
+    oldPos = event->globalPosition();
+}
 addBook::~addBook()
 {
     delete ui;
@@ -28,7 +37,7 @@ void addBook::on_closeButton_clicked()
 
 void addBook::on_menuButton_clicked()
 {
-    main->show();
+    qMain->show();
     this->close();
 }
 
@@ -75,7 +84,7 @@ void addBook::on_addButton_clicked()
            find = true;
            if(ret == QMessageBox::Yes)
            {
-               editBook * edit = new editBook;
+               editBook * edit = new editBook(ui->ISBNEdit->text() , dash , qMain);
                edit->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
                edit->show();
                this->close();
@@ -101,6 +110,7 @@ void addBook::on_addButton_clicked()
     {
         QTextStream out(&myfile);
         out << books;
+        myfile.close();
         QMessageBox success;
         success.setText("The book has successfully added. Press \"Ok\" to return to Dashboard");
         success.setIcon(QMessageBox :: Information);

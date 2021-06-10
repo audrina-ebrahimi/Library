@@ -272,6 +272,9 @@ QLineEdit
       <height>41</height>
      </rect>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
    </widget>
    <widget class="QLineEdit" name="languageEdit">
     <property name="geometry">

@@ -49,7 +49,7 @@ void boydashboard::on_closeButton_clicked()
 
 void boydashboard::on_menuButton_clicked()
 {
-    main->show();
+    qMain->show();
     this->close();
 }
 

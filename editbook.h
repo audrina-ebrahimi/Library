@@ -1,24 +1,24 @@
-#ifndef ADDBOOK_H
-#define ADDBOOK_H
+#ifndef EDITBOOK_H
+#define EDITBOOK_H
 
 #include <QMainWindow>
 #include <QMouseEvent>
 namespace Ui {
-class addBook;
+class editBook;
 }
 
-class addBook : public QMainWindow
+class editBook : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit addBook(QWidget * dash , QWidget * main , QWidget *parent = nullptr);
+    explicit editBook(QString isbn , QWidget * dash , QWidget * main , QWidget *parent = nullptr);
 
     void mousePressEvent (QMouseEvent * event);
 
     void mouseMoveEvent (QMouseEvent * event);
 
-    ~addBook();
+    ~editBook();
 
 private slots:
     void on_closeButton_clicked();
@@ -27,13 +27,15 @@ private slots:
 
     void on_dashButton_clicked();
 
-    void on_addButton_clicked();
+    void on_pushButton_clicked();
 
 private:
-    Ui::addBook *ui;
+    Ui::editBook *ui;
+    QPointF oldPos;
     QWidget * main;
     QWidget * dash;
-    QPointF oldPos;
+    QMap <QString , QStringList> book;
+    QString isbn;
 };
 
-#endif // ADDBOOK_H
+#endif // EDITBOOK_H
