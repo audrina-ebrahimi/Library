@@ -1,11 +1,11 @@
-#include "viewboy.h"
-#include "ui_viewboy.h"
+#include "viewgirl.h"
+#include "ui_viewgirl.h"
 #include "mainwindow.h"
-#include "boydashboard.h"
+#include "userdashboard.h"
 #include <QFile>
-viewboy::viewboy(QWidget * dash , QWidget * main , QWidget *parent) :
+viewgirl::viewgirl(QWidget * dash , QWidget * main , QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::viewboy)
+    ui(new Ui::viewgirl)
 {
     ui->setupUi(this);
     this->qMain = main;
@@ -13,19 +13,19 @@ viewboy::viewboy(QWidget * dash , QWidget * main , QWidget *parent) :
     load();
 }
 
-void viewboy::mousePressEvent(QMouseEvent *event)
+void viewgirl::mousePressEvent(QMouseEvent *event)
 {
     oldPos = event->globalPosition();
 }
 
-void viewboy::mouseMoveEvent(QMouseEvent *event)
+void viewgirl::mouseMoveEvent(QMouseEvent *event)
 {
     const QPointF delta = event->globalPosition() - oldPos;
     move(x() + delta.x() , y() + delta.y());
     oldPos = event->globalPosition();
 }
 
-void viewboy::load()
+void viewgirl::load()
 {
     ui->tableWidget->setRowCount(0);
     QFile myfile("F:/Qt/Library/books.txt");
@@ -56,30 +56,29 @@ void viewboy::load()
     myfile.close();
 }
 
-viewboy::~viewboy()
+viewgirl::~viewgirl()
 {
     delete ui;
 }
 
-
-void viewboy::on_closeButton_clicked()
+void viewgirl::on_closeButton_clicked()
 {
     this->close();
 }
 
-void viewboy::on_menuButton_clicked()
+void viewgirl::on_menuButton_clicked()
 {
     qMain->show();
     this->close();
 }
 
-void viewboy::on_dashButton_clicked()
+void viewgirl::on_DashButton_clicked()
 {
     dash->show();
     this->close();
 }
 
-void viewboy::on_searchEdit_textChanged(const QString &arg1)
+void viewgirl::on_searchEdit_textChanged(const QString &arg1)
 {
     if(arg1 == "")
         for(int i=0 ; i<ui->tableWidget->rowCount() ; i++)

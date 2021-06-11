@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>viewboy</class>
- <widget class="QMainWindow" name="viewboy">
+ <class>viewgirl</class>
+ <widget class="QMainWindow" name="viewgirl">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -28,20 +28,22 @@
   <property name="styleSheet">
    <string notr="true">#centralwidget
 {
-	border-image: url(:/new/photos/boyview.jpg);
+	border-image: url(:/new/photos/girlview.jpg);
 }
 
 QPushButton
 {
-	
-	background-color: rgb(87, 198, 245);
+	color: rgb(171, 27, 0);
+	background-color: rgb(255, 170, 0);
 	font: 20pt &quot;Tw Cen MT Condensed Extra Bold&quot;;
     border-radius: 10px;
 }
 QPushButton:hover
 {
 	
-	background-color: rgb(170, 255, 255);
+	
+	background-color: rgb(193, 97, 13);
+	color: rgb(255, 170, 0);
 }
 </string>
   </property>
@@ -49,8 +51,8 @@ QPushButton:hover
    <widget class="QPushButton" name="closeButton">
     <property name="geometry">
      <rect>
-      <x>1232</x>
-      <y>20</y>
+      <x>1230</x>
+      <y>30</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -78,8 +80,8 @@ QPushButton:hover
    <widget class="QPushButton" name="menuButton">
     <property name="geometry">
      <rect>
-      <x>1180</x>
-      <y>20</y>
+      <x>1178</x>
+      <y>30</y>
       <width>41</width>
       <height>41</height>
      </rect>
@@ -88,7 +90,7 @@ QPushButton:hover
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="toolTip">
-     <string>Back to main menu</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Back to main menu&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
     <property name="text">
      <string/>
@@ -104,20 +106,20 @@ QPushButton:hover
      </size>
     </property>
    </widget>
-   <widget class="QPushButton" name="dashButton">
+   <widget class="QPushButton" name="DashButton">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>30</y>
+      <x>20</x>
+      <y>20</y>
       <width>121</width>
-      <height>71</height>
+      <height>61</height>
      </rect>
     </property>
     <property name="cursor">
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="styleSheet">
-     <string notr="true">border-radius: 20px;</string>
+     <string notr="true">border-radius:20px;</string>
     </property>
     <property name="text">
      <string>Dashboard</string>
@@ -126,17 +128,18 @@ QPushButton:hover
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>190</x>
-      <y>270</y>
-      <width>261</width>
-      <height>41</height>
+      <x>170</x>
+      <y>230</y>
+      <width>251</width>
+      <height>61</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">font: 26pt &quot;Tw Cen MT Condensed Extra Bold&quot;;
-background-color: rgb(91, 209, 255);
-color: rgb(0, 0, 107);
-border-radius: 10px;</string>
+background-color: rgb(241, 158, 22);
+color: rgb(171, 27, 0);
+border-radius: 10px;
+</string>
     </property>
     <property name="text">
      <string>Search based on:</string>
@@ -145,12 +148,38 @@ border-radius: 10px;</string>
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
+   <widget class="QLineEdit" name="searchEdit">
+    <property name="geometry">
+     <rect>
+      <x>850</x>
+      <y>320</y>
+      <width>241</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="toolTip">
+     <string>The word you are looking for</string>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-radius: 10px;
+font: 16pt &quot;Tw Cen MT Condensed Extra Bold&quot;;
+background-color: rgb(255, 169, 94);
+color: rgb(220, 21, 3);
+</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="placeholderText">
+     <string>Looking for?</string>
+    </property>
+   </widget>
    <widget class="QComboBox" name="comboBox">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>350</y>
-      <width>201</width>
+      <x>200</x>
+      <y>320</y>
+      <width>191</width>
       <height>41</height>
      </rect>
     </property>
@@ -158,7 +187,7 @@ border-radius: 10px;</string>
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(170, 255, 255);
+     <string notr="true">background-color: rgb(255, 169, 94);
 border-radius: 10px;</string>
     </property>
     <item>
@@ -207,31 +236,6 @@ border-radius: 10px;</string>
      </property>
     </item>
    </widget>
-   <widget class="QLineEdit" name="searchEdit">
-    <property name="geometry">
-     <rect>
-      <x>820</x>
-      <y>350</y>
-      <width>241</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="toolTip">
-     <string>The word you are looking for</string>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(170, 255, 255);
-border-radius: 10px;
-color: rgb(28, 12, 255);
-font: 16pt &quot;Tw Cen MT Condensed Extra Bold&quot;;</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-    <property name="placeholderText">
-     <string>Looking for?</string>
-    </property>
-   </widget>
    <widget class="QTableWidget" name="tableWidget">
     <property name="geometry">
      <rect>
@@ -245,10 +249,10 @@ font: 16pt &quot;Tw Cen MT Condensed Extra Bold&quot;;</string>
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="styleSheet">
-     <string notr="true">
-background-color: rgba(170, 255, 255 , 0.8);
-border:3px solid rgb(12, 16, 255);
-color: rgb(12, 16, 255);
+     <string notr="true">background-color: rgba(255, 169, 94, 0.9);
+border:3px solid rgb(255, 85, 0);
+color: rgb(150, 26, 2);
+
 </string>
     </property>
     <property name="selectionMode">
