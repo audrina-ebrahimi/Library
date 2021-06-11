@@ -7,6 +7,7 @@
 #include "viewmember.h"
 #include "addbook.h"
 #include "preedit.h"
+#include "deletebook.h"
 admindashboard::admindashboard(QWidget * login , QWidget * main , QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::admindashboard)
@@ -92,6 +93,15 @@ void admindashboard::on_editButton_clicked()
     preEdit *pre = new preEdit(this , qMain);
     pre->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     pre->show();
+    this->hide();
+}
+
+
+void admindashboard::on_deleteButton_clicked()
+{
+    deleteBook * deleteB = new deleteBook(this , qMain);
+    deleteB->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    deleteB->show();
     this->hide();
 }
 
