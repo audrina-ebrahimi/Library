@@ -12,7 +12,7 @@ class boydashboard : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit boydashboard(QWidget * login , QWidget * main , QString user , QWidget *parent = nullptr);
+    explicit boydashboard(QWidget * main , QString user , QWidget *parent = nullptr);
 
     void mousePressEvent (QMouseEvent * event);
 
@@ -44,7 +44,7 @@ private:
     QPointF oldPos;
     QString user;
     QWidget * main;
-    QWidget * login;
+
 };
 
 #endif // BOYDASHBOARD_H

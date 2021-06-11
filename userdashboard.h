@@ -13,7 +13,7 @@ class userdashboard : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit userdashboard(QWidget * login , QWidget * main , QString user , QWidget *parent = nullptr);
+    explicit userdashboard(QWidget * main , QString user , QWidget *parent = nullptr);
 
     void mousePressEvent (QMouseEvent * event);
 
@@ -46,7 +46,7 @@ private:
     QPointF oldPos;
     QString user;
     QWidget * main;
-    QWidget * login;
+
 
 };
 

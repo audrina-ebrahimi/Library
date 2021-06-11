@@ -1,19 +1,20 @@
 #include "boydashboard.h"
 #include "ui_boydashboard.h"
-#include "log_in.h"
+
 #include "mainwindow.h"
 #include "viewboy.h"
 #include <QMessageBox>
 #include "boyget.h"
 #include "returnboy.h"
-boydashboard::boydashboard(QWidget * login , QWidget * main , QString user , QWidget *parent) :
+#include "closeboy.h"
+boydashboard::boydashboard(QWidget * main , QString user , QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::boydashboard)
 {
     ui->setupUi(this);
     this->user = user;
     this->qMain = main;
-    this->login = login;
+
 }
 
 void boydashboard::mousePressEvent(QMouseEvent *event)
@@ -41,7 +42,9 @@ boydashboard::~boydashboard()
 
 void boydashboard::on_logoutButton_clicked()
 {   
-    login->show();
+    closeBoy *close = new closeBoy(qMain);
+    close->setWindowFlags(Qt::Window | Qt:: FramelessWindowHint);
+    close->show();
     this->close();
 }
 

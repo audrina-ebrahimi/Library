@@ -2,19 +2,20 @@
 #include "ui_userdashboard.h"
 #include "mainwindow.h"
 #include "mainwindow.h"
-#include "log_in.h"
+
 #include "viewgirl.h"
 #include <QMessageBox>
 #include "girlget.h"
 #include "returngirl.h"
-userdashboard::userdashboard(QWidget * login , QWidget * main , QString user , QWidget *parent) :
+#include "closegirl.h"
+userdashboard::userdashboard(QWidget * main , QString user , QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::userdashboard)
 {
     ui->setupUi(this);
     this->user = user;
     this->qMain = main;
-    this->login = login;
+
 }
 
 void userdashboard::mousePressEvent(QMouseEvent *event)
@@ -53,7 +54,9 @@ void userdashboard::on_menuButton_clicked()
 
 void userdashboard::on_logoutButton_clicked()
 {
-    login->show();
+    closeGirl * close = new closeGirl(qMain);
+    close->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    close->show();
     this->close();
 }
 
