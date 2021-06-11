@@ -5,7 +5,7 @@
 #include "log_in.h"
 #include "viewgirl.h"
 #include <QMessageBox>
-
+#include "girlget.h"
 userdashboard::userdashboard(QWidget * login , QWidget * main , QString user , QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::userdashboard)
@@ -82,6 +82,16 @@ void userdashboard::on_pushButton_clicked()
 
                 "QMessageBox{background-color: #deaaff; font:12pt Tw Cen MT Condensed Extra Bold;}");
     success.exec();
+
+}
+
+
+void userdashboard::on_getButton_clicked()
+{
+    girlGet * get = new girlGet(this , qMain);
+    get->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    get->show();
+    this->close();
 
 }
 

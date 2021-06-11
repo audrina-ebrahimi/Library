@@ -136,7 +136,7 @@ border: 3px solid rgb(0, 0, 255);
     <property name="geometry">
      <rect>
       <x>90</x>
-      <y>370</y>
+      <y>280</y>
       <width>271</width>
       <height>61</height>
      </rect>
@@ -151,11 +151,30 @@ border: 3px solid rgb(0, 0, 255);
      <string>View Books</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="bookButton">
+   <widget class="QPushButton" name="getButton">
     <property name="geometry">
      <rect>
       <x>90</x>
-      <y>550</y>
+      <y>380</y>
+      <width>291</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 3px solid rgb(0, 0, 255);</string>
+    </property>
+    <property name="text">
+     <string>Get Book</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>580</y>
       <width>331</width>
       <height>61</height>
      </rect>
@@ -167,15 +186,15 @@ border: 3px solid rgb(0, 0, 255);
      <string notr="true">border: 3px solid rgb(0, 0, 255);</string>
     </property>
     <property name="text">
-     <string>Get/Return Books</string>
+     <string>Private Room :)</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="returnButton">
     <property name="geometry">
      <rect>
       <x>90</x>
-      <y>460</y>
-      <width>301</width>
+      <y>480</y>
+      <width>311</width>
       <height>61</height>
      </rect>
     </property>
@@ -186,7 +205,7 @@ border: 3px solid rgb(0, 0, 255);
      <string notr="true">border: 3px solid rgb(0, 0, 255);</string>
     </property>
     <property name="text">
-     <string>Private Room :)</string>
+     <string>Return Book</string>
     </property>
    </widget>
   </widget>

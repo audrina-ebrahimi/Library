@@ -4,6 +4,7 @@
 #include "mainwindow.h"
 #include "viewboy.h"
 #include <QMessageBox>
+#include "boyget.h"
 boydashboard::boydashboard(QWidget * login , QWidget * main , QString user , QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::boydashboard)
@@ -79,5 +80,14 @@ void boydashboard::on_pushButton_clicked()
 
                 "QMessageBox{background-color: #48cae4; font:12pt Tw Cen MT Condensed Extra Bold;}");
     success.exec();
+}
+
+
+void boydashboard::on_getButton_clicked()
+{
+    boyGet * get = new boyGet(this , qMain);
+    get->setWindowFlags(Qt::Window | Qt:: FramelessWindowHint);
+    get->show();
+    this->close();
 }
 

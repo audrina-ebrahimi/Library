@@ -35,6 +35,8 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_getButton_clicked();
+
 private:
     Ui::boydashboard *ui;
     QPointF oldPos;
