@@ -3,6 +3,7 @@
 #include "log_in.h"
 #include "mainwindow.h"
 #include "viewboy.h"
+#include <QMessageBox>
 boydashboard::boydashboard(QWidget * login , QWidget * main , QString user , QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::boydashboard)
@@ -59,5 +60,24 @@ void boydashboard::on_listButton_clicked()
     view->setWindowFlags(Qt::Window | Qt:: FramelessWindowHint);
     view->show();
     this->close();
+}
+
+
+void boydashboard::on_pushButton_clicked()
+{
+    QMessageBox success;
+    success.setText("In an Islamic country? Shame on you!!\nThis item is not available in your country. Astaghfirullah!!\nPress \"Ok\" to return to Dashboard");
+    success.setIcon(QMessageBox :: Information);
+    success.setStandardButtons(QMessageBox::Ok);
+    success.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    success.setDefaultButton(QMessageBox::Ok);
+    success.button(QMessageBox::Ok)->setCursor(Qt::PointingHandCursor);
+
+    success.setStyleSheet("QPushButton{ width:100px; height:30px; background-color: #4361ee; border-radius:10px;}"
+
+                "QPushButton:hover{ background-color: #3b28cc;}"
+
+                "QMessageBox{background-color: #48cae4; font:12pt Tw Cen MT Condensed Extra Bold;}");
+    success.exec();
 }
 

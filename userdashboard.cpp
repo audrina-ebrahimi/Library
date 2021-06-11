@@ -4,6 +4,8 @@
 #include "mainwindow.h"
 #include "log_in.h"
 #include "viewgirl.h"
+#include <QMessageBox>
+
 userdashboard::userdashboard(QWidget * login , QWidget * main , QString user , QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::userdashboard)
@@ -44,7 +46,7 @@ void userdashboard::on_closeButton_clicked()
 
 void userdashboard::on_menuButton_clicked()
 {
-    main->show();
+    qMain->show();
     this->close();
 }
 
@@ -60,6 +62,26 @@ void userdashboard::on_listButton_clicked()
     view->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     view->show();
     this->close();
+
+}
+
+
+void userdashboard::on_pushButton_clicked()
+{
+    QMessageBox success;
+    success.setText("In an Islamic country? Shame on you!!\nThis item is not available in your country. Astaghfirullah!!\nPress \"Ok\" to return to Dashboard");
+    success.setIcon(QMessageBox :: Information);
+    success.setStandardButtons(QMessageBox::Ok);
+    success.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    success.setDefaultButton(QMessageBox::Ok);
+    success.button(QMessageBox::Ok)->setCursor(Qt::PointingHandCursor);
+
+    success.setStyleSheet("QPushButton{ width:100px; height:30px; background-color: #9B15F4; border-radius:10px;}"
+
+                "QPushButton:hover{ background-color: #b5179e;}"
+
+                "QMessageBox{background-color: #deaaff; font:12pt Tw Cen MT Condensed Extra Bold;}");
+    success.exec();
 
 }
 
