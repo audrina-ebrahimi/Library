@@ -6,6 +6,7 @@
 #include "viewgirl.h"
 #include <QMessageBox>
 #include "girlget.h"
+#include "returngirl.h"
 userdashboard::userdashboard(QWidget * login , QWidget * main , QString user , QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::userdashboard)
@@ -93,5 +94,14 @@ void userdashboard::on_getButton_clicked()
     get->show();
     this->close();
 
+}
+
+
+void userdashboard::on_returnButton_clicked()
+{
+    returnGirl *ret = new returnGirl(this , qMain);
+    ret->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    ret->show();
+    this->close();
 }
 

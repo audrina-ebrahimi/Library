@@ -39,6 +39,8 @@ private slots:
 
     void on_getButton_clicked();
 
+    void on_returnButton_clicked();
+
 private:
     Ui::userdashboard *ui;
     QPointF oldPos;

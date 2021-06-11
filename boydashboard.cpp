@@ -5,6 +5,7 @@
 #include "viewboy.h"
 #include <QMessageBox>
 #include "boyget.h"
+#include "returnboy.h"
 boydashboard::boydashboard(QWidget * login , QWidget * main , QString user , QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::boydashboard)
@@ -88,6 +89,15 @@ void boydashboard::on_getButton_clicked()
     boyGet * get = new boyGet(this , qMain);
     get->setWindowFlags(Qt::Window | Qt:: FramelessWindowHint);
     get->show();
+    this->close();
+}
+
+
+void boydashboard::on_returnButton_clicked()
+{
+    returnBoy * ret =  new returnBoy(this , qMain);
+    ret->setWindowFlags(Qt::Window | Qt:: FramelessWindowHint);
+    ret->show();
     this->close();
 }
 
