@@ -29,6 +29,8 @@ private slots:
 
     void on_pushButton_clicked();
 
+
+
 private:
     Ui::editBook *ui;
     QPointF oldPos;
@@ -36,6 +38,7 @@ private:
     QWidget * dash;
     QMap <QString , QStringList> book;
     QString isbn;
+
 };
 
 #endif // EDITBOOK_H

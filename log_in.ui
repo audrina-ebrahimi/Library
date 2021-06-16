@@ -45,7 +45,7 @@ color: rgb(236, 140, 23);
 }
 QPushButton#closeButton
 {
-font: 75 8pt &quot;Mj_Parand&quot;;
+    font: 75 8pt &quot;Mj_Parand&quot;;
 	background-color: rgb(236, 140, 23);
 border-radius: 10px ;
 color: rgb(236, 140, 23);
@@ -97,6 +97,9 @@ border-radius: 10px ;</string>
     <property name="frame">
      <bool>false</bool>
     </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit_2">
     <property name="geometry">
@@ -120,6 +123,9 @@ border-radius: 10px ;</string>
     <property name="frame">
      <bool>false</bool>
     </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit_3">
     <property name="geometry">
@@ -142,6 +148,9 @@ border-radius: 10px ;</string>
     </property>
     <property name="frame">
      <bool>false</bool>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QWidget" name="formLayoutWidget">

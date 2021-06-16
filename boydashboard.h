@@ -19,6 +19,9 @@ public:
     void mouseMoveEvent (QMouseEvent * event);
 
     QString get_user();
+
+    static int get_book_number(QString user);
+
     ~boydashboard();
 
 private slots:

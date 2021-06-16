@@ -33,8 +33,11 @@
 
 QPushButton
 {
+	background-color: rgb(247, 187, 77);
+
+
 	color: rgb(171, 27, 0);
-	background-color: rgb(255, 170, 0);
+	
 	font: 20pt &quot;Tw Cen MT Condensed Extra Bold&quot;;
     border-radius: 10px;
 }
@@ -156,7 +159,18 @@ color: rgb(150, 26, 2);
     </column>
     <column>
      <property name="text">
-      <string>Availablity</string>
+      <string>Get Book Date</string>
+     </property>
+     <property name="font">
+      <font>
+       <weight>75</weight>
+       <bold>true</bold>
+      </font>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Return Book Date</string>
      </property>
      <property name="font">
       <font>

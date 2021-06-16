@@ -8,6 +8,7 @@
 #include "girlget.h"
 #include "returngirl.h"
 #include "closegirl.h"
+#include "boydashboard.h"
 userdashboard::userdashboard(QWidget * main , QString user , QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::userdashboard)
@@ -84,7 +85,7 @@ void userdashboard::on_pushButton_clicked()
 
                 "QPushButton:hover{ background-color: #b5179e;}"
 
-                "QMessageBox{background-color: #deaaff; font:12pt Tw Cen MT Condensed Extra Bold;}");
+                "QMessageBox{background-color: #deaaff; font:12pt Tw Cen MT Condensed Extra Bold; border: 4px solid purple;}");
     success.exec();
 
 }
@@ -92,17 +93,45 @@ void userdashboard::on_pushButton_clicked()
 
 void userdashboard::on_getButton_clicked()
 {
-    girlGet * get = new girlGet(this , qMain);
-    get->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
-    get->show();
-    this->close();
+    if(boydashboard :: get_book_number(user) == 5)
+    {
+        QMessageBox limit;
+        limit.setText("You've already got 5 books in your hand. Shame on you!!\nGet them back!!!!\nPress \"Ok\" to go to return form.");
+        limit.setIcon(QMessageBox :: Critical);
+        limit.setStandardButtons(QMessageBox::Ok);
+        limit.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+        limit.setDefaultButton(QMessageBox::Ok);
+        limit.button(QMessageBox::Ok)->setCursor(Qt::PointingHandCursor);
+
+        limit.setStyleSheet("QPushButton{ width:100px; height:30px; background-color: #9B15F4; border-radius:10px;}"
+
+                    "QPushButton:hover{ background-color: #b5179e;}"
+
+                    "QMessageBox{background-color: #deaaff; font:12pt Tw Cen MT Condensed Extra Bold; border: 4px solid purple;}");
+
+        if(limit.exec())
+        {
+            returnGirl * ret =  new returnGirl(user , this , qMain);
+            ret->setWindowFlags(Qt::Window | Qt:: FramelessWindowHint);
+            ret->show();
+            this->close();
+        }
+    }
+
+    else
+    {
+        girlGet * get = new girlGet(user , this , qMain);
+        get->setWindowFlags(Qt::Window | Qt:: FramelessWindowHint);
+        get->show();
+        this->close();
+    }
 
 }
 
 
 void userdashboard::on_returnButton_clicked()
 {
-    returnGirl *ret = new returnGirl(this , qMain);
+    returnGirl *ret = new returnGirl(user , this , qMain);
     ret->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     ret->show();
     this->close();

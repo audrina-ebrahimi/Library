@@ -32,7 +32,7 @@ void deleteBook::load()
     QTextStream in(&myfile);
 
 
-
+    book.clear();
     while(!in.atEnd())
     {
        QStringList line = in.readLine().split(" ");
@@ -82,7 +82,7 @@ void deleteBook::on_dashButton_clicked()
 void deleteBook::on_deleteButton_clicked()
 {
     QString deleteBook = ui->tableWidget->selectedItems()[1]->text();
-    qDebug() << deleteBook;
+
     book.remove(deleteBook);
 
     QFile myfile("F:/Qt/Library/books.txt");

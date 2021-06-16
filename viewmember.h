@@ -18,6 +18,7 @@ public:
     void mousePressEvent (QMouseEvent * event);
 
     void mouseMoveEvent (QMouseEvent * event);
+
     void update();
 
     ~viewMember();

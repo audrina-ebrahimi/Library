@@ -264,6 +264,9 @@ background-color: rgba(170, 255, 0 , 0.8);
     border-radius: 10px;
 </string>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
     <property name="placeholderText">
      <string>Looking for?</string>
     </property>

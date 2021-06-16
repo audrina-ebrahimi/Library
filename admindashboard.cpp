@@ -29,6 +29,8 @@ void admindashboard::mouseMoveEvent(QMouseEvent *event)
     oldPos = event->globalPosition();
 }
 
+
+
 admindashboard::~admindashboard()
 {
     delete ui;

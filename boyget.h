@@ -13,7 +13,7 @@ class boyGet : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit boyGet(QWidget *dash , QWidget *main , QWidget *parent = nullptr);
+    explicit boyGet(QString user , QWidget *dash , QWidget *main , QWidget *parent = nullptr);
 
     void load();
 
@@ -30,12 +30,18 @@ private slots:
 
     void on_dashButton_clicked();
 
+    void on_getButton_clicked();
+
+    void on_lineEdit_textChanged(const QString &arg1);
+
 private:
     Ui::boyGet *ui;
     QWidget *main;
     QWidget *dash;
     QPointF oldPos;
+    QString user;
     QMap <QString , QStringList> book;
+    QMap <QPair<QString , QString> , QDate> get_return;
 };
 
 #endif // BOYGET_H

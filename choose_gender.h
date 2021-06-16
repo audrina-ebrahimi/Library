@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 #include <QMouseEvent>
-#include <QPointF>
+
 namespace Ui {
 class choose_gender;
 }
@@ -13,7 +13,7 @@ class choose_gender : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit choose_gender(QWidget * login , QWidget * main , QString user , QWidget *parent = nullptr);
+    explicit choose_gender(QWidget * main , QString user , QWidget *parent = nullptr);
 
     void mousePressEvent (QMouseEvent * event);
 
@@ -40,7 +40,7 @@ private:
     QPointF oldPos;
     QString user;
     QWidget * main;
-    QWidget * login;
+
 };
 
 #endif // CHOOSE_GENDER_H

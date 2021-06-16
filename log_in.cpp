@@ -40,7 +40,7 @@ void log_in::on_closeButton_clicked()
 
 void log_in::on_menuButton_clicked()
 {
-    main->show();
+    qMain->show();
     this->close();
 }
 
@@ -73,7 +73,7 @@ void log_in::on_log_in_Button_clicked()
                 check_find = true;
                 break;
             }
-            choose_gender * choose = new choose_gender(this , qMain , person.get_name());
+            choose_gender * choose = new choose_gender(qMain , person.get_name());
             choose->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
             choose->show();
             this->close();

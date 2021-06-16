@@ -42,7 +42,7 @@ void sign_up::on_closeButton_clicked()
 
 void sign_up::on_menuButton_clicked()
 {
-    main->show();
+    qMain->show();
     this->close();
 }
 

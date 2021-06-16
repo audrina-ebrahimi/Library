@@ -19,6 +19,8 @@ public:
 
     void mouseMoveEvent (QMouseEvent * event);
 
+
+
     ~admindashboard();
 
 private slots:

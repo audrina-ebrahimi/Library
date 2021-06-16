@@ -2,7 +2,7 @@
 #define RETURNGIRL_H
 
 #include <QMainWindow>
-//#include <QMap>
+#include <QMap>
 #include <QMouseEvent>
 namespace Ui {
 class returnGirl;
@@ -13,9 +13,9 @@ class returnGirl : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit returnGirl(QWidget *dash , QWidget *main , QWidget *parent = nullptr);
+    explicit returnGirl(QString user , QWidget *dash , QWidget *main , QWidget *parent = nullptr);
 
-//    void load();
+    void load();
 
     void mousePressEvent (QMouseEvent * event);
 
@@ -30,12 +30,16 @@ private slots:
 
     void on_dashButton_clicked();
 
+    void on_getButton_clicked();
+
 private:
     Ui::returnGirl *ui;
     QWidget *main;
     QWidget *dash;
     QPointF oldPos;
-//    QMap <QString , QStringList> book;
+    QString user;
+    QMap <QString , QStringList> book;
+    QMap <QPair<QString , QString> , QDate> get_return;
 };
 
 #endif // RETURNGIRL_H

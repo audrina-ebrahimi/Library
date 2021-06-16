@@ -43,12 +43,14 @@ void viewgirl::load()
     }
 
     int j=0;
-    for(auto i=book.begin() ; i != book.end() ; i++)
+    for(auto i=book.begin() ; i != book.end() ; ++i)
     {
+        if(i.value().at(6).toInt() == 0)
+            continue;
         ui->tableWidget->insertRow(ui->tableWidget->rowCount());
         ui->tableWidget->setItem(j,0, new QTableWidgetItem(i.value().at(0)));
         ui->tableWidget->setItem(j,1, new QTableWidgetItem(i.key()));
-        for(int k=1 ; k<i.value().size() ; k++)
+        for(int k=1 ; k<i.value().size() ; ++k)
             ui->tableWidget->setItem(j , k+1 , new QTableWidgetItem(i.value().at(k)));
         j++;
     }

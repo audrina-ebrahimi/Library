@@ -7,6 +7,7 @@
 #include "boyget.h"
 #include "returnboy.h"
 #include "closeboy.h"
+#include <QFile>
 boydashboard::boydashboard(QWidget * main , QString user , QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::boydashboard)
@@ -32,6 +33,24 @@ void boydashboard::mouseMoveEvent(QMouseEvent *event)
 QString boydashboard::get_user()
 {
     return this->user;
+}
+
+int boydashboard::get_book_number(QString user)
+{
+    QFile myfile("F:/Qt/Library/get_return.txt");
+    myfile.open(QIODevice::Text | QIODevice :: ReadOnly);
+    QTextStream in(&myfile);
+
+    int count = 0;
+
+    while(!in.atEnd())
+    {
+       QStringList line = in.readLine().split(" ");
+       if(line[0] == user)
+           count++;
+    }
+
+    return count;
 }
 
 
@@ -89,16 +108,45 @@ void boydashboard::on_pushButton_clicked()
 
 void boydashboard::on_getButton_clicked()
 {
-    boyGet * get = new boyGet(this , qMain);
-    get->setWindowFlags(Qt::Window | Qt:: FramelessWindowHint);
-    get->show();
-    this->close();
+
+    if(get_book_number(user) == 5)
+    {
+        QMessageBox limit;
+        limit.setText("You've already got 5 books in your hand. Shame on you!!\nGet them back!!!!\nPress \"Ok\" to go to return form.");
+        limit.setIcon(QMessageBox :: Critical);
+        limit.setStandardButtons(QMessageBox::Ok);
+        limit.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+        limit.setDefaultButton(QMessageBox::Ok);
+        limit.button(QMessageBox::Ok)->setCursor(Qt::PointingHandCursor);
+
+        limit.setStyleSheet("QPushButton{ width:100px; height:30px; background-color: #057ef0; border-radius:10px;}"
+
+                    "QPushButton:hover{ background-color: #3b28cc;}"
+
+                    "QMessageBox{background-color: #48cae4; font:12pt Tw Cen MT Condensed Extra Bold; border: 4px solid blue;}");
+
+        if(limit.exec())
+        {
+            returnBoy * ret =  new returnBoy(user , this , qMain);
+            ret->setWindowFlags(Qt::Window | Qt:: FramelessWindowHint);
+            ret->show();
+            this->close();
+        }
+    }
+
+    else
+    {
+        boyGet * get = new boyGet(user , this , qMain);
+        get->setWindowFlags(Qt::Window | Qt:: FramelessWindowHint);
+        get->show();
+        this->close();
+    }
 }
 
 
 void boydashboard::on_returnButton_clicked()
 {
-    returnBoy * ret =  new returnBoy(this , qMain);
+    returnBoy * ret =  new returnBoy(user , this , qMain);
     ret->setWindowFlags(Qt::Window | Qt:: FramelessWindowHint);
     ret->show();
     this->close();

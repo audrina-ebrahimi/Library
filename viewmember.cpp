@@ -70,7 +70,7 @@ void viewMember::on_closeButton_clicked()
 
 void viewMember::on_menuButton_clicked()
 {
-    main->show();
+    qMain->show();
     this->close();
 }
 
@@ -130,8 +130,5 @@ void viewMember::on_lineEdit_textChanged(const QString &arg1)
             else
                 ui->tableWidget->hideRow(i);
         }
-
-
-
 }
 

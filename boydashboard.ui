@@ -34,7 +34,7 @@ QPushButton
 {
 	color: rgb(63, 0, 190);	
 	background-color: rgb(55, 213, 233);
-	font: 18pt &quot;Tw Cen MT Condensed Extra Bold&quot;;
+	font: 22pt &quot;Tw Cen MT Condensed Extra Bold&quot;;
 	border-radius: 30px;
 }
 QPushButton:hover

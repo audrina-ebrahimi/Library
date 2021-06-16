@@ -13,6 +13,7 @@ editBook::editBook(QString isbn , QWidget * dash , QWidget * main , QWidget *par
     this->isbn = isbn;
 
 
+
     QFile myfile("F:/Qt/Library/books.txt");
     myfile.open(QIODevice :: ReadOnly);
     QTextStream in(&myfile);
@@ -109,4 +110,5 @@ void editBook::on_pushButton_clicked()
     this->close();
 
 }
+
 
