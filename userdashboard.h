@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 #include <QMouseEvent>
-
+#include <QMap>
 namespace Ui {
 class userdashboard;
 }
@@ -20,6 +20,8 @@ public:
     void mouseMoveEvent (QMouseEvent * event);
 
     QString get_user();
+
+    bool expired();
 
     ~userdashboard();
 
@@ -46,6 +48,7 @@ private:
     QPointF oldPos;
     QString user;
     QWidget * main;
+    QMap <QPair<QString , QString> , QDate> get_return;
 
 
 };

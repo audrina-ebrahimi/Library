@@ -67,6 +67,7 @@ void addBook::on_addButton_clicked()
        if(line.contains(books.get_ISBN() , Qt :: CaseSensitive))
        {
            QMessageBox found;
+
            found.setText("The book you wanted to add already exists.\nPress \"Yes\" if you want to edit the book.\nPress \"Reset\" to add a new book.");
            found.setIcon(QMessageBox :: Critical);
            found.setStandardButtons(QMessageBox::Yes | QMessageBox::Reset);
@@ -112,6 +113,7 @@ void addBook::on_addButton_clicked()
         out << books;
         myfile.close();
         QMessageBox success;
+
         success.setText("The book has successfully added. Press \"Ok\" to return to Dashboard");
         success.setIcon(QMessageBox :: Information);
         success.setStandardButtons(QMessageBox::Ok);

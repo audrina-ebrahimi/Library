@@ -22,6 +22,8 @@ public:
 
     static int get_book_number(QString user);
 
+    bool expired();
+
     ~boydashboard();
 
 private slots:
@@ -47,6 +49,7 @@ private:
     QPointF oldPos;
     QString user;
     QWidget * main;
+    QMap <QPair<QString , QString> , QDate> get_return;
 
 };
 

@@ -9,6 +9,8 @@
 #include "returngirl.h"
 #include "closegirl.h"
 #include "boydashboard.h"
+#include <QFile>
+#include <QDate>
 userdashboard::userdashboard(QWidget * main , QString user , QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::userdashboard)
@@ -16,7 +18,6 @@ userdashboard::userdashboard(QWidget * main , QString user , QWidget *parent) :
     ui->setupUi(this);
     this->user = user;
     this->qMain = main;
-
 }
 
 void userdashboard::mousePressEvent(QMouseEvent *event)
@@ -36,6 +37,32 @@ QString userdashboard::get_user()
     return this->user;
 }
 
+bool userdashboard::expired()
+{
+    QFile file("F:/Qt/Library/get_return.txt");
+    file.open(QIODevice::Text | QIODevice :: ReadOnly);
+    QTextStream in(&file);
+
+    get_return.clear();
+    while(!in.atEnd())
+    {
+        QStringList line = in.readLine().split(" ");
+        get_return[qMakePair(line[0],line[1])] = QDate::fromString(line[2], "yyyyMMdd");
+    }
+    file.close();
+
+    for(auto i=get_return.begin() ; i != get_return.end() ; ++i)
+        if(i.key().first == user)
+        {
+            QDate current = QDate:: currentDate();
+            int d = current.daysTo(i.value());
+            if(d<0)
+                return true;
+        }
+    return false;
+
+}
+
 
 userdashboard::~userdashboard()
 {
@@ -45,6 +72,7 @@ userdashboard::~userdashboard()
 void userdashboard::on_closeButton_clicked()
 {
     this->close();
+    expired();
 }
 
 void userdashboard::on_menuButton_clicked()
@@ -63,10 +91,36 @@ void userdashboard::on_logoutButton_clicked()
 
 void userdashboard::on_listButton_clicked()
 {
-    viewgirl * view = new viewgirl(this , qMain);
-    view->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
-    view->show();
-    this->close();
+    if(expired())
+    {
+        QMessageBox expiration;
+        expiration.setText("You can't get another book or do anything until returning the expired book you've got! Shame on you!!\nReturn this ASAP!\nPress \"Ok\" to go to return form.");
+        expiration.setIcon(QMessageBox :: Critical);
+        expiration.setStandardButtons(QMessageBox::Ok);
+        expiration.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+        expiration.setDefaultButton(QMessageBox::Ok);
+        expiration.button(QMessageBox::Ok)->setCursor(Qt::PointingHandCursor);
+
+        expiration.setStyleSheet("QPushButton{ width:100px; height:30px; background-color: #9B15F4; border-radius:10px;}"
+
+                    "QPushButton:hover{ background-color: #b5179e;}"
+
+                    "QMessageBox{background-color: #deaaff; font:12pt Tw Cen MT Condensed Extra Bold; border: 4px solid purple;}");
+        if(expiration.exec())
+        {
+            returnGirl * ret =  new returnGirl(user , this , qMain);
+            ret->setWindowFlags(Qt::Window | Qt:: FramelessWindowHint);
+            ret->show();
+            this->close();
+        }
+    }
+    else
+    {
+        viewgirl * view = new viewgirl(this , qMain);
+        view->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+        view->show();
+        this->close();
+    }
 
 }
 
@@ -75,7 +129,7 @@ void userdashboard::on_pushButton_clicked()
 {
     QMessageBox success;
     success.setText("In an Islamic country? Shame on you!!\nThis item is not available in your country. Astaghfirullah!!\nPress \"Ok\" to return to Dashboard");
-    success.setIcon(QMessageBox :: Information);
+    success.setIcon(QMessageBox :: Critical);
     success.setStandardButtons(QMessageBox::Ok);
     success.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     success.setDefaultButton(QMessageBox::Ok);
@@ -117,7 +171,29 @@ void userdashboard::on_getButton_clicked()
             this->close();
         }
     }
+    else if(expired())
+    {
+        QMessageBox expiration;
+        expiration.setText("You can't get another book or do anything until returning the expired book you've got! Shame on you!!\nReturn this ASAP!\nPress \"Ok\" to go to return form.");
+        expiration.setIcon(QMessageBox :: Critical);
+        expiration.setStandardButtons(QMessageBox::Ok);
+        expiration.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+        expiration.setDefaultButton(QMessageBox::Ok);
+        expiration.button(QMessageBox::Ok)->setCursor(Qt::PointingHandCursor);
 
+        expiration.setStyleSheet("QPushButton{ width:100px; height:30px; background-color: #9B15F4; border-radius:10px;}"
+
+                    "QPushButton:hover{ background-color: #b5179e;}"
+
+                    "QMessageBox{background-color: #deaaff; font:12pt Tw Cen MT Condensed Extra Bold; border: 4px solid purple;}");
+        if(expiration.exec())
+        {
+            returnGirl * ret =  new returnGirl(user , this , qMain);
+            ret->setWindowFlags(Qt::Window | Qt:: FramelessWindowHint);
+            ret->show();
+            this->close();
+        }
+    }
     else
     {
         girlGet * get = new girlGet(user , this , qMain);

@@ -8,6 +8,8 @@
 #include "returnboy.h"
 #include "closeboy.h"
 #include <QFile>
+#include <QDate>
+
 boydashboard::boydashboard(QWidget * main , QString user , QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::boydashboard)
@@ -53,6 +55,31 @@ int boydashboard::get_book_number(QString user)
     return count;
 }
 
+bool boydashboard::expired()
+{
+    QFile file("F:/Qt/Library/get_return.txt");
+    file.open(QIODevice::Text | QIODevice :: ReadOnly);
+    QTextStream in(&file);
+
+    get_return.clear();
+    while(!in.atEnd())
+    {
+        QStringList line = in.readLine().split(" ");
+        get_return[qMakePair(line[0],line[1])] = QDate::fromString(line[2], "yyyyMMdd");
+    }
+    file.close();
+
+    for(auto i=get_return.begin() ; i != get_return.end() ; ++i)
+        if(i.key().first == user)
+        {
+            QDate current = QDate:: currentDate();
+            int d = current.daysTo(i.value());
+            if(d<0)
+                return true;
+        }
+    return false;
+}
+
 
 boydashboard::~boydashboard()
 {
@@ -80,10 +107,36 @@ void boydashboard::on_menuButton_clicked()
 
 void boydashboard::on_listButton_clicked()
 {
-    viewboy *view = new viewboy(this , qMain);
-    view->setWindowFlags(Qt::Window | Qt:: FramelessWindowHint);
-    view->show();
-    this->close();
+    if(expired())
+    {
+        QMessageBox expiration;
+        expiration.setText("You can't get another book or do anything until returning the expired book you've got! Shame on you!!\nReturn this ASAP!\nPress \"Ok\" to go to return form.");
+        expiration.setIcon(QMessageBox :: Critical);
+        expiration.setStandardButtons(QMessageBox::Ok);
+        expiration.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+        expiration.setDefaultButton(QMessageBox::Ok);
+        expiration.button(QMessageBox::Ok)->setCursor(Qt::PointingHandCursor);
+
+        expiration.setStyleSheet("QPushButton{ width:100px; height:30px; background-color: #4361ee; border-radius:10px;}"
+
+                    "QPushButton:hover{ background-color: #3b28cc;}"
+
+                    "QMessageBox{background-color: #48cae4; font:12pt Tw Cen MT Condensed Extra Bold; border: 4px solid blue;}");
+        if(expiration.exec())
+        {
+            returnBoy * ret =  new returnBoy(user , this , qMain);
+            ret->setWindowFlags(Qt::Window | Qt:: FramelessWindowHint);
+            ret->show();
+            this->close();
+        }
+    }
+    else
+    {
+        viewboy *view = new viewboy(this , qMain);
+        view->setWindowFlags(Qt::Window | Qt:: FramelessWindowHint);
+        view->show();
+        this->close();
+    }
 }
 
 
@@ -91,7 +144,7 @@ void boydashboard::on_pushButton_clicked()
 {
     QMessageBox success;
     success.setText("In an Islamic country? Shame on you!!\nThis item is not available in your country. Astaghfirullah!!\nPress \"Ok\" to return to Dashboard");
-    success.setIcon(QMessageBox :: Information);
+    success.setIcon(QMessageBox :: Critical);
     success.setStandardButtons(QMessageBox::Ok);
     success.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     success.setDefaultButton(QMessageBox::Ok);
@@ -101,7 +154,7 @@ void boydashboard::on_pushButton_clicked()
 
                 "QPushButton:hover{ background-color: #3b28cc;}"
 
-                "QMessageBox{background-color: #48cae4; font:12pt Tw Cen MT Condensed Extra Bold;}");
+                "QMessageBox{background-color: #48cae4; font:12pt Tw Cen MT Condensed Extra Bold; border: 4px solid blue;}");
     success.exec();
 }
 
@@ -126,6 +179,29 @@ void boydashboard::on_getButton_clicked()
                     "QMessageBox{background-color: #48cae4; font:12pt Tw Cen MT Condensed Extra Bold; border: 4px solid blue;}");
 
         if(limit.exec())
+        {
+            returnBoy * ret =  new returnBoy(user , this , qMain);
+            ret->setWindowFlags(Qt::Window | Qt:: FramelessWindowHint);
+            ret->show();
+            this->close();
+        }
+    }
+    else if(expired())
+    {
+        QMessageBox expiration;
+        expiration.setText("You can't get another book or do anything until returning the expired book you've got! Shame on you!!\nReturn this ASAP!\nPress \"Ok\" to go to return form.");
+        expiration.setIcon(QMessageBox :: Critical);
+        expiration.setStandardButtons(QMessageBox::Ok);
+        expiration.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+        expiration.setDefaultButton(QMessageBox::Ok);
+        expiration.button(QMessageBox::Ok)->setCursor(Qt::PointingHandCursor);
+
+        expiration.setStyleSheet("QPushButton{ width:100px; height:30px; background-color: #4361ee; border-radius:10px;}"
+
+                    "QPushButton:hover{ background-color: #3b28cc;}"
+
+                    "QMessageBox{background-color: #48cae4; font:12pt Tw Cen MT Condensed Extra Bold; border: 4px solid blue;}");
+        if(expiration.exec())
         {
             returnBoy * ret =  new returnBoy(user , this , qMain);
             ret->setWindowFlags(Qt::Window | Qt:: FramelessWindowHint);
