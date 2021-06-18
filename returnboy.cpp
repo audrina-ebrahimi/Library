@@ -184,7 +184,7 @@ void returnBoy::on_returnButton_clicked()
     QMessageBox success;
     success.setText("Your book successfuly returned!");
 
-    success.setIcon(QMessageBox :: Information);
+    success.setIconPixmap(QPixmap ("F:/Qt/Library/icons/check.png"));
     success.setStandardButtons(QMessageBox::Ok);
     success.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
 

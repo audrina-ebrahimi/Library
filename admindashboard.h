@@ -45,6 +45,8 @@ private slots:
 
     void on_deleteButton_clicked();
 
+    void on_situationButton_clicked();
+
 private:
     Ui::admindashboard *ui;
     QWidget  *main;

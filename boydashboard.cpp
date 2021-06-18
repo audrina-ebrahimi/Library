@@ -121,7 +121,7 @@ void boydashboard::on_listButton_clicked()
 
                     "QPushButton:hover{ background-color: #3b28cc;}"
 
-                    "QMessageBox{background-color: #48cae4; font:12pt Tw Cen MT Condensed Extra Bold; border: 4px solid blue;}");
+                    "QMessageBox{background-color: #14fff7; font:12pt Tw Cen MT Condensed Extra Bold; border: 4px solid blue;}");
         if(expiration.exec())
         {
             returnBoy * ret =  new returnBoy(user , this , qMain);
@@ -154,7 +154,7 @@ void boydashboard::on_pushButton_clicked()
 
                 "QPushButton:hover{ background-color: #3b28cc;}"
 
-                "QMessageBox{background-color: #48cae4; font:12pt Tw Cen MT Condensed Extra Bold; border: 4px solid blue;}");
+                "QMessageBox{background-color: #14fff7; font:12pt Tw Cen MT Condensed Extra Bold; border: 4px solid blue;}");
     success.exec();
 }
 
@@ -176,7 +176,7 @@ void boydashboard::on_getButton_clicked()
 
                     "QPushButton:hover{ background-color: #3b28cc;}"
 
-                    "QMessageBox{background-color: #48cae4; font:12pt Tw Cen MT Condensed Extra Bold; border: 4px solid blue;}");
+                    "QMessageBox{background-color: #14fff7; font:12pt Tw Cen MT Condensed Extra Bold; border: 4px solid blue;}");
 
         if(limit.exec())
         {
@@ -200,7 +200,7 @@ void boydashboard::on_getButton_clicked()
 
                     "QPushButton:hover{ background-color: #3b28cc;}"
 
-                    "QMessageBox{background-color: #48cae4; font:12pt Tw Cen MT Condensed Extra Bold; border: 4px solid blue;}");
+                    "QMessageBox{background-color: #14fff7; font:12pt Tw Cen MT Condensed Extra Bold; border: 4px solid blue;}");
         if(expiration.exec())
         {
             returnBoy * ret =  new returnBoy(user , this , qMain);

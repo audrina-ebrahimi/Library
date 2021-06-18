@@ -165,7 +165,7 @@ void girlGet::on_getButton_clicked()
         QMessageBox success;
         success.setText("This book successfully added to your account.");
 
-        success.setIcon(QMessageBox :: Information);
+        success.setIconPixmap(QPixmap ("F:/Qt/Library/icons/check.png"));
         success.setStandardButtons(QMessageBox::Ok);
         success.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
         success.setInformativeText("Caution! you've got this book from \"" + today.toString("yyyyMMMdd") + "\" to \"" + expiration.toString("yyyyMMMdd") +"\"");

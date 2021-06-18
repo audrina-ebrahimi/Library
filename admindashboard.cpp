@@ -8,6 +8,8 @@
 #include "addbook.h"
 #include "preedit.h"
 #include "deletebook.h"
+#include "situation.h"
+
 admindashboard::admindashboard(QWidget * login , QWidget * main , QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::admindashboard)
@@ -105,5 +107,11 @@ void admindashboard::on_deleteButton_clicked()
     deleteB->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     deleteB->show();
     this->hide();
+}
+
+
+void admindashboard::on_situationButton_clicked()
+{
+    situa
 }
 
