@@ -112,6 +112,9 @@ void admindashboard::on_deleteButton_clicked()
 
 void admindashboard::on_situationButton_clicked()
 {
-    situa
+    situation * condition = new situation(this , qMain);
+    condition->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    condition->show();
+    this->hide();
 }
 

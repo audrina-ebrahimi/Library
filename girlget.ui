@@ -160,6 +160,9 @@ border:3px solid rgb(0, 0, 255);
 background-color: rgba(0, 255, 255, 0.8);
 </string>
     </property>
+    <property name="alternatingRowColors">
+     <bool>true</bool>
+    </property>
     <property name="selectionMode">
      <enum>QAbstractItemView::SingleSelection</enum>
     </property>
