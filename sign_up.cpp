@@ -1,14 +1,14 @@
 #include "sign_up.h"
 #include "ui_sign_up.h"
+
 #include "mainwindow.h"
 #include "log_in.h"
 #include "person.h"
+#include "overload.h"
+
 #include <QFile>
 #include <QTextStream>
-#include <overload.h>
 #include <QMessageBox>
-#include <QVector>
-#include <QtDebug>
 
 sign_up::sign_up(QWidget * main , QWidget *parent) :
     QMainWindow(parent),

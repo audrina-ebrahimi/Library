@@ -1,5 +1,6 @@
 #include "admindashboard.h"
 #include "ui_admindashboard.h"
+
 #include "mainwindow.h"
 #include "log_in.h"
 #include "groupbooks.h"
@@ -31,13 +32,10 @@ void admindashboard::mouseMoveEvent(QMouseEvent *event)
     oldPos = event->globalPosition();
 }
 
-
-
 admindashboard::~admindashboard()
 {
     delete ui;
 }
-
 
 void admindashboard::on_closeButton_clicked()
 {
@@ -81,7 +79,6 @@ void admindashboard::on_viewMemButton_clicked()
     this->hide();
 }
 
-
 void admindashboard::on_addButton_clicked()
 {
     addBook * add = new addBook(this , qMain);
@@ -91,7 +88,6 @@ void admindashboard::on_addButton_clicked()
 
 }
 
-
 void admindashboard::on_editButton_clicked()
 {
     preEdit *pre = new preEdit(this , qMain);
@@ -100,7 +96,6 @@ void admindashboard::on_editButton_clicked()
     this->hide();
 }
 
-
 void admindashboard::on_deleteButton_clicked()
 {
     deleteBook * deleteB = new deleteBook(this , qMain);
@@ -108,7 +103,6 @@ void admindashboard::on_deleteButton_clicked()
     deleteB->show();
     this->hide();
 }
-
 
 void admindashboard::on_situationButton_clicked()
 {

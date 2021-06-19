@@ -1,10 +1,13 @@
 #include "addbook.h"
 #include "ui_addbook.h"
+
 #include "book.h"
-#include <QFile>
 #include "overload.h"
-#include <QMessageBox>
 #include "editbook.h"
+
+#include <QFile>
+#include <QMessageBox>
+
 addBook::addBook(QWidget * dash , QWidget * main , QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::addBook)
@@ -13,6 +16,7 @@ addBook::addBook(QWidget * dash , QWidget * main , QWidget *parent) :
     this->qMain = main;
     this->dash = dash;
 }
+
 void addBook::mousePressEvent(QMouseEvent *event)
 {
     oldPos = event->globalPosition();
@@ -24,6 +28,7 @@ void addBook::mouseMoveEvent(QMouseEvent *event)
     move(x() + delta.x() , y() + delta.y());
     oldPos = event->globalPosition();
 }
+
 addBook::~addBook()
 {
     delete ui;
@@ -34,20 +39,17 @@ void addBook::on_closeButton_clicked()
     this->close();
 }
 
-
 void addBook::on_menuButton_clicked()
 {
     qMain->show();
     this->close();
 }
 
-
 void addBook::on_dashButton_clicked()
 {
     dash->show();
     this->close();
 }
-
 
 void addBook::on_addButton_clicked()
 {

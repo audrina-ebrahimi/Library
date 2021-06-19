@@ -1,5 +1,6 @@
 #include "returnboy.h"
 #include "ui_returnboy.h"
+
 #include <QFile>
 #include <QDate>
 #include <QMessageBox>
@@ -14,6 +15,7 @@ returnBoy::returnBoy(QString user , QWidget *dash , QWidget *main , QWidget *par
     this->user = user;
     load();
 }
+
 void returnBoy::mousePressEvent(QMouseEvent *event)
 {
     oldPos = event->globalPosition();
@@ -132,6 +134,7 @@ void returnBoy::load()
     }
     ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
+
 returnBoy::~returnBoy()
 {
     delete ui;
@@ -142,20 +145,17 @@ void returnBoy::on_closeButton_clicked()
     this->close();
 }
 
-
 void returnBoy::on_menuButton_clicked()
 {
     qMain->show();
     this->close();
 }
 
-
 void returnBoy::on_dashButton_clicked()
 {
     dash->show();
     this->close();
 }
-
 
 void returnBoy::on_returnButton_clicked()
 {

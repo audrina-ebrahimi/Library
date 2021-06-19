@@ -1,11 +1,13 @@
 #include "viewmember.h"
 #include "ui_viewmember.h"
+
 #include "mainwindow.h"
 #include "admindashboard.h"
+
 #include <QFile>
-#include <QMap>
 #include <QMessageBox>
 #include <QCompleter>
+
 viewMember::viewMember(QWidget * admin , QWidget * main , QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::viewMember)
@@ -15,6 +17,7 @@ viewMember::viewMember(QWidget * admin , QWidget * main , QWidget *parent) :
     this->admin = admin;
     update();
 }
+
 void viewMember::update()
 {
     ui->tableWidget->setRowCount(0);
@@ -46,6 +49,7 @@ void viewMember::update()
     ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
     myfile.close();
 }
+
 void viewMember::mousePressEvent(QMouseEvent *event)
 {
     oldPos = event->globalPosition();
@@ -115,7 +119,6 @@ void viewMember::on_deleteButton_clicked()
 
     update();
 }
-
 
 void viewMember::on_lineEdit_textChanged(const QString &arg1)
 {

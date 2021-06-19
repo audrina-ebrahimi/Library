@@ -1,11 +1,13 @@
 #include "girlget.h"
 #include "ui_girlget.h"
+
+#include <boydashboard.h>
+#include <returngirl.h>
+
 #include <QFile>
 #include <QDate>
 #include <QMessageBox>
 #include <QCompleter>
-#include <boydashboard.h>
-#include <returngirl.h>
 
 #define expire 7
 
@@ -70,6 +72,7 @@ void girlGet::load()
     ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
 
 }
+
 void girlGet::mousePressEvent(QMouseEvent *event)
 {
     oldPos = event->globalPosition();
@@ -92,20 +95,17 @@ void girlGet::on_closeButton_clicked()
     this->close();
 }
 
-
 void girlGet::on_dashButton_clicked()
 {
     dash->show();
     this->close();
 }
 
-
 void girlGet::on_menuButton_clicked()
 {
     qMain->show();
     this->close();
 }
-
 
 void girlGet::on_getButton_clicked()
 {
@@ -184,7 +184,6 @@ void girlGet::on_getButton_clicked()
     }
 
 }
-
 
 void girlGet::on_lineEdit_textChanged(const QString &arg1)
 {

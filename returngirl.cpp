@@ -1,8 +1,10 @@
 #include "returngirl.h"
 #include "ui_returngirl.h"
+
 #include <QFile>
 #include <QDate>
 #include <QMessageBox>
+
 returnGirl::returnGirl(QString user , QWidget *dash , QWidget *main , QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::returnGirl)
@@ -120,6 +122,7 @@ void returnGirl::load()
     }
     ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
+
 void returnGirl::mousePressEvent(QMouseEvent *event)
 {
     oldPos = event->globalPosition();
@@ -131,6 +134,7 @@ void returnGirl::mouseMoveEvent(QMouseEvent *event)
     move(x() + delta.x() , y() + delta.y());
     oldPos = event->globalPosition();
 }
+
 returnGirl::~returnGirl()
 {
     delete ui;
@@ -141,20 +145,17 @@ void returnGirl::on_closeButton_clicked()
     this->close();
 }
 
-
 void returnGirl::on_menuButton_clicked()
 {
     qMain->show();
     this->close();
 }
 
-
 void returnGirl::on_dashButton_clicked()
 {
     dash->show();
     this->close();
 }
-
 
 void returnGirl::on_getButton_clicked()
 {

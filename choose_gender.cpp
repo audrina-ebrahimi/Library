@@ -1,8 +1,10 @@
 #include "choose_gender.h"
 #include "ui_choose_gender.h"
+
 #include "mainwindow.h"
 #include "userdashboard.h"
 #include "boydashboard.h"
+
 choose_gender::choose_gender(QWidget * main , QString user , QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::choose_gender)
@@ -28,7 +30,6 @@ QString choose_gender::get_user()
 {
   return this->user;
 }
-
 
 choose_gender::~choose_gender()
 {

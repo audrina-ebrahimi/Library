@@ -1,11 +1,14 @@
 #include "groupbooks.h"
 #include "ui_groupbooks.h"
-#include <QList>
+
 #include "mainwindow.h"
 #include "admindashboard.h"
 #include "addgroup.h"
 #include "editgroup.h"
+
 #include <QMessageBox>
+#include <QFile>
+#include <QList>
 
 GroupBooks::GroupBooks(QWidget * admin , QWidget * main , QWidget *parent) :
     QMainWindow(parent),
@@ -122,8 +125,6 @@ GroupBooks::~GroupBooks()
     delete ui;
 }
 
-
-
 void GroupBooks::on_menuButton_clicked()
 {
     qMain->show();
@@ -149,12 +150,10 @@ void GroupBooks::on_addButton_clicked()
     this->close();
 }
 
-
 void GroupBooks::on_refreshButton_clicked()
 {
     load();
 }
-
 
 void GroupBooks::on_editButton_clicked()
 {
@@ -185,7 +184,6 @@ void GroupBooks::on_editButton_clicked()
         this->close();
     }
 }
-
 
 void GroupBooks::on_deteleButton_clicked()
 {

@@ -2,6 +2,7 @@
 #define EDITGROUP_H
 
 #include <QMainWindow>
+#include <QMouseEvent>
 #include <QMap>
 
 namespace Ui {
@@ -14,6 +15,10 @@ class editGroup : public QMainWindow
 
 public:
     explicit editGroup(QString groupName , QWidget *Groupdash , QWidget *main , QWidget *parent = nullptr);
+
+    void mousePressEvent (QMouseEvent * event);
+
+    void mouseMoveEvent (QMouseEvent * event);
 
     void load();
 
@@ -31,6 +36,7 @@ private slots:
 private:
     Ui::editGroup *ui;
     QWidget *Groupdash;
+    QPointF oldPos;
     QWidget *main;
     QMap <QString , QStringList> groups;
     QMap <QString , QStringList> books;

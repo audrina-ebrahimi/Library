@@ -1,8 +1,9 @@
 #include "editbook.h"
 #include "ui_editbook.h"
+
 #include <QMessageBox>
 #include <QFile>
-#include <QMap>
+
 editBook::editBook(QString isbn , QWidget * dash , QWidget * main , QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::editBook)
@@ -43,6 +44,7 @@ editBook::editBook(QString isbn , QWidget * dash , QWidget * main , QWidget *par
 
 
 }
+
 void editBook::mousePressEvent(QMouseEvent *event)
 {
     oldPos = event->globalPosition();
@@ -54,6 +56,7 @@ void editBook::mouseMoveEvent(QMouseEvent *event)
     move(x() + delta.x() , y() + delta.y());
     oldPos = event->globalPosition();
 }
+
 editBook::~editBook()
 {
     delete ui;
@@ -64,20 +67,17 @@ void editBook::on_closeButton_clicked()
     this->close();
 }
 
-
 void editBook::on_menuButton_clicked()
 {
     qMain->show();
     this->close();
 }
 
-
 void editBook::on_dashButton_clicked()
 {
     dash->show();
     this->close();
 }
-
 
 void editBook::on_pushButton_clicked()
 {

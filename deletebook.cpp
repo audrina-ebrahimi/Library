@@ -1,6 +1,8 @@
 #include "deletebook.h"
 #include "ui_deletebook.h"
+
 #include <QMessageBox>
+#include <QFile>
 
 deleteBook::deleteBook(QWidget * dash , QWidget * main , QWidget *parent) :
     QMainWindow(parent),
@@ -54,6 +56,7 @@ void deleteBook::load()
     ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
     myfile.close();
 }
+
 deleteBook::~deleteBook()
 {
     delete ui;
@@ -64,20 +67,17 @@ void deleteBook::on_closeButton_clicked()
     this->close();
 }
 
-
 void deleteBook::on_menuButton_clicked()
 {
     qMain->show();
     this->close();
 }
 
-
 void deleteBook::on_dashButton_clicked()
 {
     dash->show();
     this->close();
 }
-
 
 void deleteBook::on_deleteButton_clicked()
 {

@@ -1,8 +1,11 @@
 #include "viewgirl.h"
 #include "ui_viewgirl.h"
+
 #include "mainwindow.h"
 #include "userdashboard.h"
+
 #include <QFile>
+
 viewgirl::viewgirl(QWidget * dash , QWidget * main , QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::viewgirl)

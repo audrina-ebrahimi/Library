@@ -2,6 +2,7 @@
 #define BOOK_H
 
 #include <QString>
+
 class book
 {
 public:

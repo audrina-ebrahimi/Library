@@ -68,6 +68,9 @@ color: rgb(150, 26, 2);
 
 </string>
     </property>
+    <property name="alternatingRowColors">
+     <bool>false</bool>
+    </property>
     <property name="selectionMode">
      <enum>QAbstractItemView::SingleSelection</enum>
     </property>

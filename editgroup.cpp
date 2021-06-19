@@ -1,5 +1,6 @@
 #include "editgroup.h"
 #include "ui_editgroup.h"
+
 #include <QFile>
 #include <QMessageBox>
 
@@ -20,6 +21,18 @@ editGroup::editGroup(QString groupName , QWidget *Groupdash , QWidget *main , QW
     }
 
     groups.remove(groupName);
+}
+
+void editGroup::mousePressEvent(QMouseEvent *event)
+{
+    oldPos = event->globalPosition();
+}
+
+void editGroup::mouseMoveEvent(QMouseEvent *event)
+{
+    const QPointF delta = event->globalPosition() - oldPos;
+    move(x() + delta.x() , y() + delta.y());
+    oldPos = event->globalPosition();
 }
 
 void editGroup::load()
@@ -77,20 +90,17 @@ void editGroup::on_closeButton_clicked()
     this->close();
 }
 
-
 void editGroup::on_menuButton_clicked()
 {
     qMain->show();
     this->close();
 }
 
-
 void editGroup::on_dashButton_clicked()
 {
     Groupdash->show();
     this->close();
 }
-
 
 void editGroup::on_editButton_clicked()
 {

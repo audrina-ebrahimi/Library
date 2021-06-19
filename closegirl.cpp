@@ -13,6 +13,7 @@ closeGirl::~closeGirl()
 {
     delete ui;
 }
+
 void closeGirl::mousePressEvent(QMouseEvent *event)
 {
     oldPos = event->globalPosition();
@@ -29,7 +30,6 @@ void closeGirl::on_pushButton_clicked()
 {
     this->close();
 }
-
 
 void closeGirl::on_pushButton_2_clicked()
 {

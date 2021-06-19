@@ -2,10 +2,9 @@
 #define GROUPBOOKS_H
 
 #include <QMainWindow>
-#include <QStringList>
-#include <QFile>
-#include <QTextStream>
 #include <QMouseEvent>
+#include <QMap>
+
 namespace Ui {
 class GroupBooks;
 }

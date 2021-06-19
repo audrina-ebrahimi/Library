@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <QMouseEvent>
+#include <QMap>
+
 namespace Ui {
 class viewMember;
 }

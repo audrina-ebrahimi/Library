@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <QMouseEvent>
 #include <QMap>
-#include <QFile>
+
 namespace Ui {
 class deleteBook;
 }

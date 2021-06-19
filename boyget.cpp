@@ -1,11 +1,14 @@
 #include "boyget.h"
 #include "ui_boyget.h"
+
+#include "boydashboard.h"
+#include "returnboy.h"
+
 #include <QFile>
 #include <QCompleter>
 #include <QDate>
 #include <QMessageBox>
-#include "boydashboard.h"
-#include "returnboy.h"
+
 #define expire 7
 boyGet::boyGet(QString user , QWidget *dash , QWidget *main , QWidget *parent) :
     QMainWindow(parent),
@@ -90,20 +93,17 @@ void boyGet::on_closeButton_clicked()
     this->close();
 }
 
-
 void boyGet::on_menuButton_clicked()
 {
     qMain->show();
     this->close();
 }
 
-
 void boyGet::on_dashButton_clicked()
 {
     dash->show();
     this->close();
 }
-
 
 void boyGet::on_getButton_clicked()
 {
@@ -180,7 +180,6 @@ void boyGet::on_getButton_clicked()
         load();
     }
 }
-
 
 void boyGet::on_lineEdit_textChanged(const QString &arg1)
 {

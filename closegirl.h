@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QMouseEvent>
+
 namespace Ui {
 class closeGirl;
 }

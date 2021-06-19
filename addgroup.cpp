@@ -1,7 +1,9 @@
 #include "addgroup.h"
 #include "ui_addgroup.h"
+
 #include <QFile>
 #include <QMessageBox>
+
 AddGroup::AddGroup(QWidget *Groupdash , QWidget *main , QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::AddGroup)
@@ -11,6 +13,7 @@ AddGroup::AddGroup(QWidget *Groupdash , QWidget *main , QWidget *parent) :
     this->Groupdash = Groupdash;
     load();
 }
+
 void AddGroup::mousePressEvent(QMouseEvent *event)
 {
     oldPos = event->globalPosition();
@@ -67,6 +70,7 @@ void AddGroup::load()
     }
     file.close();
 }
+
 AddGroup::~AddGroup()
 {
     delete ui;
@@ -77,20 +81,17 @@ void AddGroup::on_closeButton_clicked()
     this->close();
 }
 
-
 void AddGroup::on_menuButton_clicked()
 {
     qMain->show();
     this->close();
 }
 
-
 void AddGroup::on_dashButton_clicked()
 {
     Groupdash->show();
     this->close();
 }
-
 
 void AddGroup::on_addButton_clicked()
 {

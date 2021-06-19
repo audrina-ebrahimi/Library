@@ -1,16 +1,17 @@
 #include "userdashboard.h"
 #include "ui_userdashboard.h"
-#include "mainwindow.h"
-#include "mainwindow.h"
 
+#include "mainwindow.h"
 #include "viewgirl.h"
-#include <QMessageBox>
 #include "girlget.h"
 #include "returngirl.h"
 #include "closegirl.h"
 #include "boydashboard.h"
+
+#include <QMessageBox>
 #include <QFile>
 #include <QDate>
+
 userdashboard::userdashboard(QWidget * main , QString user , QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::userdashboard)
@@ -62,7 +63,6 @@ bool userdashboard::expired()
     return false;
 
 }
-
 
 userdashboard::~userdashboard()
 {
@@ -124,7 +124,6 @@ void userdashboard::on_listButton_clicked()
 
 }
 
-
 void userdashboard::on_pushButton_clicked()
 {
     QMessageBox success;
@@ -143,7 +142,6 @@ void userdashboard::on_pushButton_clicked()
     success.exec();
 
 }
-
 
 void userdashboard::on_getButton_clicked()
 {
@@ -203,7 +201,6 @@ void userdashboard::on_getButton_clicked()
     }
 
 }
-
 
 void userdashboard::on_returnButton_clicked()
 {

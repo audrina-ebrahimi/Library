@@ -1,5 +1,6 @@
 #include "situation.h"
 #include "ui_situation.h"
+
 #include <QFile>
 #include <QDate>
 
@@ -11,6 +12,18 @@ situation::situation(QWidget * admin , QWidget * main , QWidget *parent) :
     this->qMain = main;
     this->admin = admin;
     load();
+}
+
+void situation::mousePressEvent(QMouseEvent *event)
+{
+    oldPos = event->globalPosition();
+}
+
+void situation::mouseMoveEvent(QMouseEvent *event)
+{
+    const QPointF delta = event->globalPosition() - oldPos;
+    move(x() + delta.x() , y() + delta.y());
+    oldPos = event->globalPosition();
 }
 
 void situation::load()
@@ -108,20 +121,17 @@ void situation::on_closeButton_clicked()
     this->close();
 }
 
-
 void situation::on_menuButton_clicked()
 {
     qMain->show();
     this->hide();
 }
 
-
 void situation::on_dashButton_clicked()
 {
     admin->show();
     this->close();
 }
-
 
 void situation::on_lineEdit_textChanged(const QString &arg1)
 {

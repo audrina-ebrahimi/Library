@@ -3,10 +3,11 @@
 
 #include "mainwindow.h"
 #include "viewboy.h"
-#include <QMessageBox>
 #include "boyget.h"
 #include "returnboy.h"
 #include "closeboy.h"
+
+#include <QMessageBox>
 #include <QFile>
 #include <QDate>
 
@@ -80,7 +81,6 @@ bool boydashboard::expired()
     return false;
 }
 
-
 boydashboard::~boydashboard()
 {
     delete ui;
@@ -139,7 +139,6 @@ void boydashboard::on_listButton_clicked()
     }
 }
 
-
 void boydashboard::on_pushButton_clicked()
 {
     QMessageBox success;
@@ -157,7 +156,6 @@ void boydashboard::on_pushButton_clicked()
                 "QMessageBox{background-color: #14fff7; font:12pt Tw Cen MT Condensed Extra Bold; border: 4px solid blue;}");
     success.exec();
 }
-
 
 void boydashboard::on_getButton_clicked()
 {
@@ -218,7 +216,6 @@ void boydashboard::on_getButton_clicked()
         this->close();
     }
 }
-
 
 void boydashboard::on_returnButton_clicked()
 {

@@ -8,6 +8,7 @@ closeBoy::closeBoy(QWidget *main , QWidget *parent) :
     ui->setupUi(this);
     this->qMain = main;
 }
+
 void closeBoy::mousePressEvent(QMouseEvent *event)
 {
     oldPos = event->globalPosition();
@@ -19,6 +20,7 @@ void closeBoy::mouseMoveEvent(QMouseEvent *event)
     move(x() + delta.x() , y() + delta.y());
     oldPos = event->globalPosition();
 }
+
 closeBoy::~closeBoy()
 {
     delete ui;
@@ -28,7 +30,6 @@ void closeBoy::on_pushButton_clicked()
 {
     this->close();
 }
-
 
 void closeBoy::on_pushButton_2_clicked()
 {

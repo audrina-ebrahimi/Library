@@ -2,8 +2,9 @@
 #define RETURNGIRL_H
 
 #include <QMainWindow>
-#include <QMap>
 #include <QMouseEvent>
+#include <QMap>
+
 namespace Ui {
 class returnGirl;
 }

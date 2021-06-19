@@ -1,33 +1,30 @@
-#ifndef VIEWBOY_H
-#define VIEWBOY_H
+#ifndef VIEW_BOOKLIST_H
+#define VIEW_BOOKLIST_H
 
 #include <QMainWindow>
 #include <QMouseEvent>
 #include <QMap>
 
 namespace Ui {
-class viewboy;
+class view_booklist;
 }
 
-class viewboy : public QMainWindow
+class view_booklist : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit viewboy(QWidget * dash , QWidget * main , QWidget *parent = nullptr);
+    explicit view_booklist(QWidget * admin , QWidget * main , QWidget *parent = nullptr);
 
     void mousePressEvent (QMouseEvent * event);
 
     void mouseMoveEvent (QMouseEvent * event);
 
-    void load();
-
-    QString get_user();
-    ~viewboy();
+    ~view_booklist();
 
 private slots:
 
-
+    void load();
 
     void on_closeButton_clicked();
 
@@ -35,14 +32,14 @@ private slots:
 
     void on_dashButton_clicked();
 
-    void on_searchEdit_textChanged(const QString &arg1);
+    void on_lineEdit_textChanged(const QString &arg1);
 
 private:
-    Ui::viewboy *ui;
+    Ui::view_booklist *ui;
     QPointF oldPos;
     QWidget * main;
-    QWidget * dash;
+    QWidget * admin;
     QMap <QString , QStringList> book;
 };
 
-#endif // VIEWBOY_H
+#endif // VIEW_BOOKLIST_H

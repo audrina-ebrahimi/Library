@@ -1,34 +1,40 @@
-#include "viewboy.h"
-#include "ui_viewboy.h"
+#include "view_booklist.h"
+#include "ui_view_booklist.h"
 
 #include "mainwindow.h"
-#include "boydashboard.h"
+#include "admindashboard.h"
 
 #include <QFile>
+#include <QCompleter>
 
-viewboy::viewboy(QWidget * dash , QWidget * main , QWidget *parent) :
+view_booklist::view_booklist(QWidget * admin , QWidget * main , QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::viewboy)
+    ui(new Ui::view_booklist)
 {
     ui->setupUi(this);
     this->qMain = main;
-    this->dash = dash;
+    this->admin = admin;
     load();
 }
 
-void viewboy::mousePressEvent(QMouseEvent *event)
+void view_booklist::mousePressEvent(QMouseEvent *event)
 {
     oldPos = event->globalPosition();
 }
 
-void viewboy::mouseMoveEvent(QMouseEvent *event)
+void view_booklist::mouseMoveEvent(QMouseEvent *event)
 {
     const QPointF delta = event->globalPosition() - oldPos;
     move(x() + delta.x() , y() + delta.y());
     oldPos = event->globalPosition();
 }
 
-void viewboy::load()
+view_booklist::~view_booklist()
+{
+    delete ui;
+}
+
+void view_booklist::load()
 {
     ui->tableWidget->setRowCount(0);
     QFile myfile("F:/Qt/Library/books.txt");
@@ -46,14 +52,12 @@ void viewboy::load()
     }
 
     int j=0;
-    for(auto i=book.begin() ; i != book.end() ; ++i)
+    for(auto i=book.begin() ; i != book.end() ; i++)
     {
-        if(i.value().at(6).toInt() == 0)
-            continue;
         ui->tableWidget->insertRow(ui->tableWidget->rowCount());
         ui->tableWidget->setItem(j,0, new QTableWidgetItem(i.value().at(0)));
         ui->tableWidget->setItem(j,1, new QTableWidgetItem(i.key()));
-        for(int k=1 ; k<i.value().size() ; ++k)
+        for(int k=1 ; k<i.value().size() ; k++)
             ui->tableWidget->setItem(j , k+1 , new QTableWidgetItem(i.value().at(k)));
         j++;
     }
@@ -61,29 +65,24 @@ void viewboy::load()
     myfile.close();
 }
 
-viewboy::~viewboy()
-{
-    delete ui;
-}
-
-void viewboy::on_closeButton_clicked()
+void view_booklist::on_closeButton_clicked()
 {
     this->close();
 }
 
-void viewboy::on_menuButton_clicked()
+void view_booklist::on_menuButton_clicked()
 {
     qMain->show();
     this->close();
 }
 
-void viewboy::on_dashButton_clicked()
+void view_booklist::on_dashButton_clicked()
 {
-    dash->show();
+    admin->show();
     this->close();
 }
 
-void viewboy::on_searchEdit_textChanged(const QString &arg1)
+void view_booklist::on_lineEdit_textChanged(const QString &arg1)
 {
     if(arg1 == "")
         for(int i=0 ; i<ui->tableWidget->rowCount() ; i++)
