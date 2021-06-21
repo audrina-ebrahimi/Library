@@ -10,12 +10,17 @@ returnBoy::returnBoy(QString user , QWidget *dash , QWidget *main , QWidget *par
     ui(new Ui::returnBoy)
 {
     ui->setupUi(this);
+
+    //Transfer main, dash and username
     this->qMain = main;
     this->dash = dash;
     this->user = user;
+
+    //Fill the table widget
     load();
 }
 
+//Dragable
 void returnBoy::mousePressEvent(QMouseEvent *event)
 {
     oldPos = event->globalPosition();
@@ -28,9 +33,12 @@ void returnBoy::mouseMoveEvent(QMouseEvent *event)
     oldPos = event->globalPosition();
 }
 
+//Fill the table widget and maps
 void returnBoy::load()
 {
     ui->tableWidget->setRowCount(0);
+
+    //Read from file and fill book map
     QFile myfile("F:/Qt/Library/books.txt");
     myfile.open(QIODevice::Text | QIODevice :: ReadOnly);
     QTextStream in(&myfile);
@@ -46,6 +54,7 @@ void returnBoy::load()
 
     myfile.close();
 
+    //Read from file and fill get and return map
     QFile file("F:/Qt/Library/get_return.txt");
     file.open(QIODevice::Text | QIODevice :: ReadOnly);
     QTextStream in1(&file);
@@ -59,17 +68,21 @@ void returnBoy::load()
 
     file.close();
 
+    //Fill the table widget
     int j=0;
     for(auto i=get_return.begin() ; i != get_return.end() ; ++i)
     {
         if(i.key().first == user)
         {
+            //Calulate the expired date
             QDate current = QDate:: currentDate();
             int d = current.daysTo(i.value());
 
-
+            //isbn
             ui->tableWidget->insertRow(ui->tableWidget->rowCount());
             QTableWidgetItem *isbn1 = new QTableWidgetItem();
+
+            //Yellow for 1 or 0 day left and red for expired
             if(d == 1 || d == 0)
                 isbn1->setBackground(QBrush(QColor(255,234,0)));
             else if( d<0 )
@@ -80,8 +93,10 @@ void returnBoy::load()
 
 
 
-
+            //book name
             QTableWidgetItem *isbn2 = new QTableWidgetItem();
+
+            //Yellow for 1 or 0 day left and red for expired
             if(d == 1 || d == 0)
                 isbn2->setBackground(QBrush(QColor(255,234,0)));
             else if( d<0 )
@@ -92,8 +107,10 @@ void returnBoy::load()
 
 
 
-
+            //return date
             QTableWidgetItem *isbn3 = new QTableWidgetItem();
+
+            //Yellow for 1 or 0 day left and red for expired
             if(d == 1 || d == 0)
                 isbn3->setBackground(QBrush(QColor(255,234,0)));
             else if( d<0 )
@@ -104,8 +121,10 @@ void returnBoy::load()
 
 
 
-
+            //get date
             QTableWidgetItem *isbn4 = new QTableWidgetItem();
+
+            //Yellow for 1 or 0 day left and red for expired
             if(d == 1 || d == 0)
                 isbn4->setBackground(QBrush(QColor(255,234,0)));
             else if( d<0 )
@@ -116,10 +135,12 @@ void returnBoy::load()
             ui->tableWidget->setItem(j,7,isbn4);
 
 
-
+            //Other book information
             for(int k=1 ; k<book.value(i.key().second).size()-1 ; ++k)
             {
                 QTableWidgetItem *isbn5 = new QTableWidgetItem();
+
+                //Yellow for 1 or 0 day left and red for expired
                 if(d == 1 || d == 0)
                     isbn5->setBackground(QBrush(QColor(255,234,0)));
                 else if( d<0 )
@@ -140,6 +161,7 @@ returnBoy::~returnBoy()
     delete ui;
 }
 
+//Close, menu and dash
 void returnBoy::on_closeButton_clicked()
 {
     this->close();
@@ -157,12 +179,16 @@ void returnBoy::on_dashButton_clicked()
     this->close();
 }
 
+//Return book
 void returnBoy::on_returnButton_clicked()
 {
+    //Get the book's ISBN
     QString isbn = ui->tableWidget->selectedItems()[1]->text();
 
+    //Remove returned book from map
     get_return.remove(qMakePair(user , isbn));
 
+    //Fill the file with new map
     QFile myfile("F:/Qt/Library/get_return.txt");
     myfile.open(QIODevice::Text | QIODevice :: WriteOnly);
     QTextStream out(&myfile);
@@ -172,8 +198,10 @@ void returnBoy::on_returnButton_clicked()
 
     myfile.close();
 
+    //Add one to avalablity
     book[isbn][6] = QString::number(book[isbn].at(6).toInt()+1);
 
+    //Fill the file with new mao
     QFile file("F:/Qt/Library/books.txt");
     file.open(QIODevice :: WriteOnly | QIODevice::Text);
     QTextStream out2(&file);

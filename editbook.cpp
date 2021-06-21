@@ -9,12 +9,14 @@ editBook::editBook(QString isbn , QWidget * dash , QWidget * main , QWidget *par
     ui(new Ui::editBook)
 {
     ui->setupUi(this);
+
+    //Transfer main, dash and ISBN
     this->qMain = main;
     this->dash = dash;
     this->isbn = isbn;
 
 
-
+    //Read books from file and fill their map
     QFile myfile("F:/Qt/Library/books.txt");
     myfile.open(QIODevice :: ReadOnly);
     QTextStream in(&myfile);
@@ -29,6 +31,7 @@ editBook::editBook(QString isbn , QWidget * dash , QWidget * main , QWidget *par
            book[line[0]] << line.at(i);
     }
 
+    //Fill items with the book's information
     ui->ISBNEdit->setText(isbn);
     ui->nameEdit->setText(book[isbn].at(0));
     ui->authorEdit->setText(book[isbn].at(1));
@@ -38,6 +41,7 @@ editBook::editBook(QString isbn , QWidget * dash , QWidget * main , QWidget *par
     ui->spinPage->setValue(book[isbn].at(5).toInt());
     ui->spinAvail->setValue(book[isbn].at(6).toInt());
 
+    //Remove the book for edit
     book.remove(isbn);
 
     myfile.close();
@@ -45,6 +49,7 @@ editBook::editBook(QString isbn , QWidget * dash , QWidget * main , QWidget *par
 
 }
 
+//Dragable
 void editBook::mousePressEvent(QMouseEvent *event)
 {
     oldPos = event->globalPosition();
@@ -62,6 +67,7 @@ editBook::~editBook()
     delete ui;
 }
 
+//Close, menu and dash
 void editBook::on_closeButton_clicked()
 {
     this->close();
@@ -79,12 +85,15 @@ void editBook::on_dashButton_clicked()
     this->close();
 }
 
+//Edit the book
 void editBook::on_pushButton_clicked()
 {
+    //Get book's new informarion
     isbn = ui->ISBNEdit->text();
     book[isbn] << ui->nameEdit->text() << ui->authorEdit->text() << ui->subjectEdit->text() << ui->publisherEdit->text()
                << ui->languageEdit->text() << ui->spinPage->text() << ui->spinAvail->text();
 
+    //Fill the book file
     QFile myfile("F:/Qt/Library/books.txt");
     myfile.open(QIODevice :: WriteOnly | QIODevice::Text);
     QTextStream out(&myfile);

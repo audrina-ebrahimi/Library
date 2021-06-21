@@ -17,10 +17,13 @@ userdashboard::userdashboard(QWidget * main , QString user , QWidget *parent) :
     ui(new Ui::userdashboard)
 {
     ui->setupUi(this);
+
+    //Transfer main and username
     this->user = user;
     this->qMain = main;
 }
 
+//Dragable
 void userdashboard::mousePressEvent(QMouseEvent *event)
 {
     oldPos = event->globalPosition();
@@ -38,8 +41,10 @@ QString userdashboard::get_user()
     return this->user;
 }
 
+//Function for checking expired book
 bool userdashboard::expired()
 {
+    //Read get and return file and fill its map
     QFile file("F:/Qt/Library/get_return.txt");
     file.open(QIODevice::Text | QIODevice :: ReadOnly);
     QTextStream in(&file);
@@ -52,6 +57,7 @@ bool userdashboard::expired()
     }
     file.close();
 
+    //Return true::expired  false::unexpired
     for(auto i=get_return.begin() ; i != get_return.end() ; ++i)
         if(i.key().first == user)
         {
@@ -69,6 +75,7 @@ userdashboard::~userdashboard()
     delete ui;
 }
 
+//Close, menu and log out
 void userdashboard::on_closeButton_clicked()
 {
     this->close();
@@ -89,8 +96,10 @@ void userdashboard::on_logoutButton_clicked()
     this->close();
 }
 
+//Show the book list
 void userdashboard::on_listButton_clicked()
 {
+    //If user has expired book
     if(expired())
     {
         QMessageBox expiration;
@@ -124,6 +133,7 @@ void userdashboard::on_listButton_clicked()
 
 }
 
+//Private room
 void userdashboard::on_pushButton_clicked()
 {
     QMessageBox success;
@@ -143,8 +153,10 @@ void userdashboard::on_pushButton_clicked()
 
 }
 
+//Get book
 void userdashboard::on_getButton_clicked()
 {
+    //If the user alreagy got five book
     if(boydashboard :: get_book_number(user) == 5)
     {
         QMessageBox limit;
@@ -169,6 +181,8 @@ void userdashboard::on_getButton_clicked()
             this->close();
         }
     }
+
+    //If user has expired book
     else if(expired())
     {
         QMessageBox expiration;
@@ -202,6 +216,7 @@ void userdashboard::on_getButton_clicked()
 
 }
 
+//Return book
 void userdashboard::on_returnButton_clicked()
 {
     returnGirl *ret = new returnGirl(user , this , qMain);

@@ -15,10 +15,13 @@ log_in::log_in( QWidget * main , QWidget *parent) :
     ui(new Ui::log_in)
 {
     ui->setupUi(this);
+
+    //Transfer main
     this->qMain = main;
 
 }
 
+//Dragable
 void log_in::mousePressEvent(QMouseEvent *event)
 {
     oldPos = event->globalPosition();
@@ -36,6 +39,7 @@ log_in::~log_in()
     delete ui;
 }
 
+//Close and menu
 void log_in::on_closeButton_clicked()
 {
     this->close();
@@ -47,8 +51,10 @@ void log_in::on_menuButton_clicked()
     this->close();
 }
 
+//Login button
 void log_in::on_log_in_Button_clicked()
 {
+    //Complete person class
     Person person;
     person.set_name( ui->lineEdit_name->text() );
     person.set_pass( ui->lineEdit_pass->text() );
@@ -63,8 +69,10 @@ void log_in::on_log_in_Button_clicked()
     do
     {
         line = in.readLine();
+        //If user and pass exists
         if(line.contains(person.get_name() , Qt :: CaseSensitive) && line.contains(person.get_pass() , Qt :: CaseSensitive))
         {
+            //If it was admin
             if(person.get_name() == "admin" && person.get_pass() == "admin")
             {
                 admindashboard *admin = new admindashboard(this , qMain);
@@ -76,6 +84,7 @@ void log_in::on_log_in_Button_clicked()
                 check_find = true;
                 break;
             }
+            //If it was usual user
             choose_gender * choose = new choose_gender(qMain , person.get_name());
             choose->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
             choose->show();
@@ -85,6 +94,7 @@ void log_in::on_log_in_Button_clicked()
             check_find = true;
             break;
         }
+        //If the password was wrong
         else if(line.contains(person.get_name() , Qt :: CaseSensitive))
         {
             QMessageBox warn;
@@ -112,6 +122,7 @@ void log_in::on_log_in_Button_clicked()
 
     myfile.close();
 
+    //If the username was unavailable send user to sign up
     if(check_find == false)
     {
 

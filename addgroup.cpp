@@ -9,11 +9,16 @@ AddGroup::AddGroup(QWidget *Groupdash , QWidget *main , QWidget *parent) :
     ui(new Ui::AddGroup)
 {
     ui->setupUi(this);
+
+    //Transfer main and dash
     this->qMain = main;
     this->Groupdash = Groupdash;
+
+    //Fill table widget
     load();
 }
 
+//Dragable
 void AddGroup::mousePressEvent(QMouseEvent *event)
 {
     oldPos = event->globalPosition();
@@ -26,9 +31,12 @@ void AddGroup::mouseMoveEvent(QMouseEvent *event)
     oldPos = event->globalPosition();
 }
 
+//Function for filling the table widget
 void AddGroup::load()
 {
     ui->tableWidget->setRowCount(0);
+
+    //Read books from file and fill their map
     QFile myfile("F:/Qt/Library/books.txt");
     myfile.open(QIODevice::Text | QIODevice :: ReadOnly);
     QTextStream in(&myfile);
@@ -43,6 +51,7 @@ void AddGroup::load()
            books[line[0]] << line.at(i);
     }
 
+    //Fill table widget
     int j=0;
     for(auto i=books.begin() ; i != books.end() ; i++)
     {
@@ -56,6 +65,7 @@ void AddGroup::load()
     ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
     myfile.close();
 
+    //Read groups from file and fill their map
     QFile file("F:/Qt/Library/group.txt");
     file.open(QIODevice::Text | QIODevice :: ReadOnly);
     QTextStream in1(&file);
@@ -76,6 +86,7 @@ AddGroup::~AddGroup()
     delete ui;
 }
 
+//Close, menu and dash
 void AddGroup::on_closeButton_clicked()
 {
     this->close();
@@ -93,6 +104,7 @@ void AddGroup::on_dashButton_clicked()
     this->close();
 }
 
+//Add Group
 void AddGroup::on_addButton_clicked()
 {
     QList <QTableWidgetItem *> selected = ui->tableWidget->selectedItems();
@@ -100,6 +112,7 @@ void AddGroup::on_addButton_clicked()
     QStringList isbn;
     QString name = ui->nameEdit->text();
 
+    //If Group name exists
     if(groups.contains(name))
     {
         QMessageBox repeated;
@@ -118,15 +131,19 @@ void AddGroup::on_addButton_clicked()
         repeated.exec();
     }
 
+    //If name was unique
     else
     {
+        //Get the Data of table widget
         for (int i = 1; i < selected.size(); i+=8)
             isbn << selected.at(i)->text();
 
 
+        //Insert to groups map
         groups.insert(name , isbn);
 
 
+        //Add to file
         QFile file("F:/Qt/Library/group.txt");
         file.open(QIODevice::Text | QIODevice :: WriteOnly);
         QTextStream out(&file);

@@ -9,11 +9,16 @@ editGroup::editGroup(QString groupName , QWidget *Groupdash , QWidget *main , QW
     ui(new Ui::editGroup)
 {
     ui->setupUi(this);
+
+    //Transfer main, dash and groupname
     this->qMain = main;
     this->Groupdash = Groupdash;
     this->groupName = groupName;
+
+    //Fill the table
     load();
 
+    //Select the books which are in the group
     for(int i=0 ; i<ui->tableWidget->rowCount() ; ++i)
     {
         if(groups.value(groupName).contains(ui->tableWidget->item(i,1)->text()))
@@ -23,6 +28,7 @@ editGroup::editGroup(QString groupName , QWidget *Groupdash , QWidget *main , QW
     groups.remove(groupName);
 }
 
+//Dragable
 void editGroup::mousePressEvent(QMouseEvent *event)
 {
     oldPos = event->globalPosition();
@@ -35,9 +41,12 @@ void editGroup::mouseMoveEvent(QMouseEvent *event)
     oldPos = event->globalPosition();
 }
 
+//Show books in the table widget
 void editGroup::load()
 {
     ui->tableWidget->setRowCount(0);
+
+    //Read from file and fill the book map
     QFile myfile("F:/Qt/Library/books.txt");
     myfile.open(QIODevice::Text | QIODevice :: ReadOnly);
     QTextStream in(&myfile);
@@ -52,6 +61,7 @@ void editGroup::load()
            books[line[0]] << line.at(i);
     }
 
+    //Fill the table widget
     int j=0;
     for(auto i=books.begin() ; i != books.end() ; i++)
     {
@@ -65,6 +75,7 @@ void editGroup::load()
     ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
     myfile.close();
 
+    //Read from file and fill the groups map
     QFile file("F:/Qt/Library/group.txt");
     file.open(QIODevice::Text | QIODevice :: ReadOnly);
     QTextStream in1(&file);
@@ -85,6 +96,7 @@ editGroup::~editGroup()
     delete ui;
 }
 
+//Close, menu and dash
 void editGroup::on_closeButton_clicked()
 {
     this->close();
@@ -102,19 +114,23 @@ void editGroup::on_dashButton_clicked()
     this->close();
 }
 
+//Edit the group information
 void editGroup::on_editButton_clicked()
 {
+    //Remove the previous group
     groups.remove(groupName);
 
+    //Get all the selecet book
     QList <QTableWidgetItem *> selected = ui->tableWidget->selectedItems();
 
     QStringList isbn;
 
-
+    //Name of group
     if(ui->nameEdit->text().size() != 0)
         groupName = ui->nameEdit->text();
 
 
+    //Repeated name
     if(groups.contains(groupName))
     {
         QMessageBox repeated;
@@ -133,6 +149,7 @@ void editGroup::on_editButton_clicked()
         repeated.exec();
     }
 
+    //Insert edited group to groups map
     else
     {
         for (int i = 1; i < selected.size(); i+=8)
@@ -141,7 +158,7 @@ void editGroup::on_editButton_clicked()
 
         groups.insert(groupName , isbn);
 
-
+        //Fill the file with groups map
         QFile file("F:/Qt/Library/group.txt");
         file.open(QIODevice::Text | QIODevice :: WriteOnly);
         QTextStream out(&file);

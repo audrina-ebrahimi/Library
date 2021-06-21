@@ -6,6 +6,8 @@ closeGirl::closeGirl(QWidget *main , QWidget *parent) :
     ui(new Ui::closeGirl)
 {
     ui->setupUi(this);
+
+    //Transfer main
     this->qMain = main;
 }
 
@@ -14,6 +16,7 @@ closeGirl::~closeGirl()
     delete ui;
 }
 
+//Dragable
 void closeGirl::mousePressEvent(QMouseEvent *event)
 {
     oldPos = event->globalPosition();
@@ -26,6 +29,7 @@ void closeGirl::mouseMoveEvent(QMouseEvent *event)
     oldPos = event->globalPosition();
 }
 
+//Close and menu
 void closeGirl::on_pushButton_clicked()
 {
     this->close();

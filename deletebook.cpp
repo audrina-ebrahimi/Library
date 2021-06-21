@@ -9,11 +9,16 @@ deleteBook::deleteBook(QWidget * dash , QWidget * main , QWidget *parent) :
     ui(new Ui::deleteBook)
 {
     ui->setupUi(this);
+
+    //Transfer main, dash and username
     this->qMain = main;
     this->dash = dash;
+
+    //Fill the table
     load();
 }
 
+//Dragable
 void deleteBook::mousePressEvent(QMouseEvent *event)
 {
     oldPos = event->globalPosition();
@@ -26,9 +31,13 @@ void deleteBook::mouseMoveEvent(QMouseEvent *event)
     oldPos = event->globalPosition();
 }
 
+//Show books in the table widget
 void deleteBook::load()
 {
+
     ui->tableWidget->setRowCount(0);
+
+    //Read data of books from file
     QFile myfile("F:/Qt/Library/books.txt");
     myfile.open(QIODevice::Text | QIODevice :: ReadOnly);
     QTextStream in(&myfile);
@@ -43,6 +52,7 @@ void deleteBook::load()
            book[line[0]] << line.at(i);
     }
 
+    //Set items
     int j=0;
     for(auto i=book.begin() ; i != book.end() ; i++)
     {
@@ -62,6 +72,7 @@ deleteBook::~deleteBook()
     delete ui;
 }
 
+//Close, menu and dash
 void deleteBook::on_closeButton_clicked()
 {
     this->close();
@@ -79,12 +90,16 @@ void deleteBook::on_dashButton_clicked()
     this->close();
 }
 
+//Delete book
 void deleteBook::on_deleteButton_clicked()
 {
+    //Choose the book
     QString deleteBook = ui->tableWidget->selectedItems()[1]->text();
 
+    //Delete from map
     book.remove(deleteBook);
 
+    //Fill the file again
     QFile myfile("F:/Qt/Library/books.txt");
     myfile.open(QIODevice :: WriteOnly | QIODevice::Text);
     QTextStream out(&myfile);

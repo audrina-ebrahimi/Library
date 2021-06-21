@@ -23,7 +23,11 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Return Girl</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="icons.qrc">
+    <normaloff>:/icons/icons/mainicon.png</normaloff>:/icons/icons/mainicon.png</iconset>
   </property>
   <property name="styleSheet">
    <string notr="true">#centralwidget

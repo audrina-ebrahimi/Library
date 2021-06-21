@@ -16,11 +16,14 @@ boydashboard::boydashboard(QWidget * main , QString user , QWidget *parent) :
     ui(new Ui::boydashboard)
 {
     ui->setupUi(this);
+
+    //Transfer main and username
     this->user = user;
     this->qMain = main;
 
 }
 
+//Dragable
 void boydashboard::mousePressEvent(QMouseEvent *event)
 {
     oldPos = event->globalPosition();
@@ -38,6 +41,7 @@ QString boydashboard::get_user()
     return this->user;
 }
 
+//Count user get books
 int boydashboard::get_book_number(QString user)
 {
     QFile myfile("F:/Qt/Library/get_return.txt");
@@ -56,8 +60,10 @@ int boydashboard::get_book_number(QString user)
     return count;
 }
 
+//Function for checking expired book
 bool boydashboard::expired()
 {
+    //Read get and return file and fill its map
     QFile file("F:/Qt/Library/get_return.txt");
     file.open(QIODevice::Text | QIODevice :: ReadOnly);
     QTextStream in(&file);
@@ -70,6 +76,7 @@ bool boydashboard::expired()
     }
     file.close();
 
+    //Return true::expired  false::unexpired
     for(auto i=get_return.begin() ; i != get_return.end() ; ++i)
         if(i.key().first == user)
         {
@@ -86,6 +93,7 @@ boydashboard::~boydashboard()
     delete ui;
 }
 
+//Close, menu and log out
 void boydashboard::on_logoutButton_clicked()
 {   
     closeBoy *close = new closeBoy(qMain);
@@ -105,8 +113,10 @@ void boydashboard::on_menuButton_clicked()
     this->close();
 }
 
+//Book list
 void boydashboard::on_listButton_clicked()
 {
+    //Check if the user has expired book
     if(expired())
     {
         QMessageBox expiration;
@@ -139,6 +149,7 @@ void boydashboard::on_listButton_clicked()
     }
 }
 
+//Private room
 void boydashboard::on_pushButton_clicked()
 {
     QMessageBox success;
@@ -157,9 +168,11 @@ void boydashboard::on_pushButton_clicked()
     success.exec();
 }
 
+//Get book
 void boydashboard::on_getButton_clicked()
 {
 
+    //Check if the member has already 5 books
     if(get_book_number(user) == 5)
     {
         QMessageBox limit;
@@ -184,6 +197,7 @@ void boydashboard::on_getButton_clicked()
             this->close();
         }
     }
+    //Check if member has expired book
     else if(expired())
     {
         QMessageBox expiration;
@@ -217,6 +231,7 @@ void boydashboard::on_getButton_clicked()
     }
 }
 
+//Return book
 void boydashboard::on_returnButton_clicked()
 {
     returnBoy * ret =  new returnBoy(user , this , qMain);

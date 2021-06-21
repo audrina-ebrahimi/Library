@@ -13,14 +13,21 @@ viewMember::viewMember(QWidget * admin , QWidget * main , QWidget *parent) :
     ui(new Ui::viewMember)
 {
     ui->setupUi(this);
+
+    //Transfer main and dash
     this->qMain = main;
     this->admin = admin;
+
+    //Fill the table widget
     update();
 }
 
+//Funtion for filling the table widget and user_pass map
 void viewMember::update()
 {
     ui->tableWidget->setRowCount(0);
+
+    //Read data from file and fill the map
     QFile myfile("F:/Qt/Library/name_pass.txt");
     myfile.open(QIODevice :: ReadOnly);
     QTextStream in(&myfile);
@@ -37,7 +44,7 @@ void viewMember::update()
     complete->setCaseSensitivity(Qt::CaseInsensitive);
     ui->lineEdit->setCompleter(complete);
 
-
+    //Fill the table widget
     int j=0;
     for(auto i=user_pass.begin() ; i != user_pass.end() ; i++)
     {
@@ -50,6 +57,7 @@ void viewMember::update()
     myfile.close();
 }
 
+//Dragable
 void viewMember::mousePressEvent(QMouseEvent *event)
 {
     oldPos = event->globalPosition();
@@ -67,6 +75,7 @@ viewMember::~viewMember()
     delete ui;
 }
 
+//Close, menu and dash
 void viewMember::on_closeButton_clicked()
 {
     this->close();
@@ -84,9 +93,13 @@ void viewMember::on_dashButton_clicked()
     this->close();
 }
 
+//Delete member
 void viewMember::on_deleteButton_clicked()
 {
+    //Get the user for deleting
     QString hated = ui->tableWidget->selectedItems()[0]->text();
+
+    //Prevent to delete the admin
     if(hated == "admin")
     {
         QMessageBox warn;
@@ -108,8 +121,11 @@ void viewMember::on_deleteButton_clicked()
         warn.exec();
         return;
     }
+
+    //Delete the member
     user_pass.remove(hated);
 
+    //Fill file with new data
     QFile myfile("F:/Qt/Library/name_pass.txt");
     myfile.open(QIODevice :: WriteOnly);
     QTextStream out(&myfile);
@@ -117,11 +133,14 @@ void viewMember::on_deleteButton_clicked()
     for(auto i = user_pass.begin() ; i != user_pass.end() ; i++)
         out << i.key() << " " << i.value() << "\n";
 
+
     update();
 }
 
+//Search box
 void viewMember::on_lineEdit_textChanged(const QString &arg1)
 {
+    //If the line edit is empty
     if(arg1 == "")
         for(int i=0 ; i<ui->tableWidget->rowCount() ; i++)
             ui->tableWidget->showRow(i);

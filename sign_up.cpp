@@ -15,9 +15,12 @@ sign_up::sign_up(QWidget * main , QWidget *parent) :
     ui(new Ui::sign_up)
 {
     ui->setupUi(this);
+
+    //Transfer main
     this->qMain = main;
 }
 
+//Dragable
 void sign_up::mousePressEvent(QMouseEvent *event)
 {
     oldPos = event->globalPosition();
@@ -35,6 +38,7 @@ sign_up::~sign_up()
     delete ui;
 }
 
+//Close and menu
 void sign_up::on_closeButton_clicked()
 {
     this->close();
@@ -46,14 +50,16 @@ void sign_up::on_menuButton_clicked()
     this->close();
 }
 
+//Sign up
 void sign_up::on_sign_up_Button_clicked()
 {
+    //Complete person class
     Person person;
     person.set_name( ui->lineEdit_name->text() );
     person.set_pass( ui->lineEdit_pass->text() );
 
 
-
+    //Read file
     QFile myfile("F:\\Qt\\Library\\name_pass.txt");
     myfile.open(QIODevice :: ReadOnly);
     QTextStream in(&myfile);
@@ -63,6 +69,8 @@ void sign_up::on_sign_up_Button_clicked()
     do
     {
         line = in.readLine();
+
+        //If the username already exists
         if(line.contains(person.get_name() , Qt :: CaseSensitive))
         {
             QMessageBox warn;
@@ -91,9 +99,11 @@ void sign_up::on_sign_up_Button_clicked()
 
     myfile.close();
 
+    //If the username was unique
     if(check_find == false)
     {
 
+        //Add user to file
         QFile file("F:\\Qt\\Library\\name_pass.txt");
         file.open(QIODevice :: Append);
         QTextStream out(&file);

@@ -15,15 +15,22 @@ boyGet::boyGet(QString user , QWidget *dash , QWidget *main , QWidget *parent) :
     ui(new Ui::boyGet)
 {
     ui->setupUi(this);
+
+    //Transfer main, dash and username
     this->qMain = main;
     this->dash = dash;
     this->user = user;
+
+    //Fill the table
     load();
 }
 
+//Function for filling the table widget for
 void boyGet::load()
 {
     ui->tableWidget->setRowCount(0);
+
+    //Read books from file and fill their map
     QFile myfile("F:/Qt/Library/books.txt");
     myfile.open(QIODevice::Text | QIODevice :: ReadOnly);
     QTextStream in(&myfile);
@@ -37,12 +44,14 @@ void boyGet::load()
            book[line[0]] << line.at(i);
     }
 
+    //Set completer for ISBNs
     QCompleter * complete = new QCompleter(book.keys() ,this);
     complete->setCaseSensitivity(Qt::CaseInsensitive);
     ui->lineEdit->setCompleter(complete);
 
     myfile.close();
 
+    //Read groups from file and fill their map
     QFile file("F:/Qt/Library/get_return.txt");
     file.open(QIODevice::Text | QIODevice :: ReadOnly);
     QTextStream in1(&file);
@@ -56,6 +65,7 @@ void boyGet::load()
 
     file.close();
 
+    //Fill table widget
     int j=0;
     for(auto i=book.begin() ; i != book.end() ; ++i)
     {
@@ -71,6 +81,7 @@ void boyGet::load()
     ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
 
+//Dragable
 void boyGet::mousePressEvent(QMouseEvent *event)
 {
     oldPos = event->globalPosition();
@@ -88,6 +99,7 @@ boyGet::~boyGet()
     delete ui;
 }
 
+//Close, menu and dash
 void boyGet::on_closeButton_clicked()
 {
     this->close();
@@ -105,8 +117,10 @@ void boyGet::on_dashButton_clicked()
     this->close();
 }
 
+//Get book
 void boyGet::on_getButton_clicked()
 {
+    //Check if the member already has 5 books
     if(boydashboard :: get_book_number(user) == 5)
     {
         QMessageBox limit;
@@ -132,15 +146,19 @@ void boyGet::on_getButton_clicked()
         }
 
     }
+    //Get the book
     else
     {
-
+        //Set dates
         QDate today = QDate::currentDate();
         QDate expiration = today.addDays(expire);
+
+        //Add to map
         QString isbn = ui->tableWidget->selectedItems()[1]->text();
 
         get_return.insert(qMakePair(user , isbn) , expiration);
 
+        //Add user book to file
         QFile myfile("F:/Qt/Library/get_return.txt");
         myfile.open(QIODevice::Text | QIODevice :: WriteOnly);
         QTextStream out(&myfile);
@@ -150,6 +168,7 @@ void boyGet::on_getButton_clicked()
 
         myfile.close();
 
+        //Minus 1 from availablity of book
         book[isbn][6] = QString::number(book[isbn].at(6).toInt()-1);
 
         QFile file("F:/Qt/Library/books.txt");
@@ -181,8 +200,10 @@ void boyGet::on_getButton_clicked()
     }
 }
 
+//Search box
 void boyGet::on_lineEdit_textChanged(const QString &arg1)
 {
+    //If the line edit is empty show all
     if(arg1 == "")
         for(int i=0 ; i<ui->tableWidget->rowCount() ; i++)
             ui->tableWidget->showRow(i);

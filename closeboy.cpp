@@ -6,9 +6,12 @@ closeBoy::closeBoy(QWidget *main , QWidget *parent) :
     ui(new Ui::closeBoy)
 {
     ui->setupUi(this);
+
+    //Transfer main
     this->qMain = main;
 }
 
+//Dragable
 void closeBoy::mousePressEvent(QMouseEvent *event)
 {
     oldPos = event->globalPosition();
@@ -26,6 +29,7 @@ closeBoy::~closeBoy()
     delete ui;
 }
 
+//Close and menu
 void closeBoy::on_pushButton_clicked()
 {
     this->close();

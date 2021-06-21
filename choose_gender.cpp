@@ -10,10 +10,13 @@ choose_gender::choose_gender(QWidget * main , QString user , QWidget *parent) :
     ui(new Ui::choose_gender)
 {
     ui->setupUi(this);
+
+    //Transfer main and username
     this->user = user;
     this->qMain = main;
 }
 
+//Dragable
 void choose_gender::mousePressEvent(QMouseEvent *event)
 {
     oldPos = event->globalPosition();
@@ -36,6 +39,7 @@ choose_gender::~choose_gender()
     delete ui;
 }
 
+//Close and menu
 void choose_gender::on_menuButton_clicked()
 {
     qMain->show();
@@ -47,6 +51,7 @@ void choose_gender::on_closeButton_clicked()
     this->close();
 }
 
+//Choose girl
 void choose_gender::on_girl_Button_clicked()
 {
     userdashboard * g_dash = new userdashboard(qMain , get_user());
@@ -55,6 +60,7 @@ void choose_gender::on_girl_Button_clicked()
     this->close();
 }
 
+//Choose boy
 void choose_gender::on_boy_Button_clicked()
 {
     boydashboard *b_dash = new boydashboard(qMain , get_user());

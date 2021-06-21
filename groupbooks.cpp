@@ -16,11 +16,15 @@ GroupBooks::GroupBooks(QWidget * admin , QWidget * main , QWidget *parent) :
 {
     ui->setupUi(this);
 
+    //Transfer main and dash
     this->qMain = main;
     this->admin = admin;
+
+    //Fill the tree widget and maps
     load();
 }
 
+//Dragable
 void GroupBooks::mousePressEvent(QMouseEvent *event)
 {
     oldPos = event->globalPosition();
@@ -33,11 +37,14 @@ void GroupBooks::mouseMoveEvent(QMouseEvent *event)
     oldPos = event->globalPosition();
 }
 
+//Function for filling the tree widget and maps
 void GroupBooks::load()
 {
+
     ui->treeWidget->clear();
     ui->treeWidget->setHeaderLabel("Groups");
 
+    //Read from fill and fill books map
     QFile myfile("F:/Qt/Library/books.txt");
     myfile.open(QIODevice::Text | QIODevice :: ReadOnly);
     QTextStream in(&myfile);
@@ -53,7 +60,7 @@ void GroupBooks::load()
 
     myfile.close();
 
-
+    //Read from file and fill groups map
     QFile file("F:/Qt/Library/group.txt");
     file.open(QIODevice::Text | QIODevice :: ReadOnly);
     QTextStream in1(&file);
@@ -70,12 +77,14 @@ void GroupBooks::load()
 
     file.close();
 
+    //Fill tree widget
     for(auto i=groups.begin() ; i!=groups.end() ; ++i)
     {
+        //Put the name of group as father
         QTreeWidgetItem * group_name = new QTreeWidgetItem(ui->treeWidget);
         group_name->setText(0 , i.key());
 
-
+        //Put the details of each bood as children of group name
         for(int j = 0; j<i.value().size(); ++j)
         {
             QTreeWidgetItem * book_name = new QTreeWidgetItem();
@@ -111,6 +120,7 @@ void GroupBooks::load()
             avail->setText(0, "Availablities: " + books.value(i.value().at(j)).at(6));
             book_name->addChild(avail);
 
+            //Make items selectalbe
             for (int k = 0; k < book_name->childCount(); ++k)
                 book_name->child(k)->setFlags(Qt::ItemIsSelectable);
 
@@ -125,6 +135,7 @@ GroupBooks::~GroupBooks()
     delete ui;
 }
 
+//Close, menu and dash
 void GroupBooks::on_menuButton_clicked()
 {
     qMain->show();
@@ -142,6 +153,7 @@ void GroupBooks::on_closeButton_clicked()
     this->close();
 }
 
+//Add a group
 void GroupBooks::on_addButton_clicked()
 {
     AddGroup * add = new AddGroup(this , qMain);
@@ -150,13 +162,16 @@ void GroupBooks::on_addButton_clicked()
     this->close();
 }
 
+//Refresh the tree widget
 void GroupBooks::on_refreshButton_clicked()
 {
     load();
 }
 
+//Edit a group
 void GroupBooks::on_editButton_clicked()
 {
+    //If user didn't choose a group from tree widget
     if(ui->treeWidget->selectedItems().size() == 0)
     {
         QMessageBox failed;
@@ -185,8 +200,10 @@ void GroupBooks::on_editButton_clicked()
     }
 }
 
+//Detele a group
 void GroupBooks::on_deteleButton_clicked()
 {
+    //If user didn't choose a group
     if(ui->treeWidget->selectedItems().size() == 0)
     {
         QMessageBox failed;
@@ -204,10 +221,13 @@ void GroupBooks::on_deteleButton_clicked()
                     "QMessageBox{background-color: #14fff7; font:12pt Tw Cen MT Condensed Extra Bold; border: 4px solid blue;}");
         failed.exec();
     }
+
+    //Remove the group from map
     else
     {
         groups.remove(ui->treeWidget->selectedItems().at(0)->text(0));
 
+        //Fill the group file with new map
         QFile file("F:/Qt/Library/group.txt");
         file.open(QIODevice::Text | QIODevice :: WriteOnly);
         QTextStream out(&file);

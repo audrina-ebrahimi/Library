@@ -12,11 +12,16 @@ view_booklist::view_booklist(QWidget * admin , QWidget * main , QWidget *parent)
     ui(new Ui::view_booklist)
 {
     ui->setupUi(this);
+
+    //Transfer main and dash
     this->qMain = main;
     this->admin = admin;
+
+    //Fill the table widget
     load();
 }
 
+//Dragable
 void view_booklist::mousePressEvent(QMouseEvent *event)
 {
     oldPos = event->globalPosition();
@@ -34,9 +39,12 @@ view_booklist::~view_booklist()
     delete ui;
 }
 
+//Function for fill the table widget and book map
 void view_booklist::load()
 {
     ui->tableWidget->setRowCount(0);
+
+    //Read data from file and fill the map
     QFile myfile("F:/Qt/Library/books.txt");
     myfile.open(QIODevice::Text | QIODevice :: ReadOnly);
     QTextStream in(&myfile);
@@ -51,6 +59,7 @@ void view_booklist::load()
            book[line[0]] << line.at(i);
     }
 
+    //Fill the table widget
     int j=0;
     for(auto i=book.begin() ; i != book.end() ; i++)
     {
@@ -65,6 +74,7 @@ void view_booklist::load()
     myfile.close();
 }
 
+//Close, menu and dash
 void view_booklist::on_closeButton_clicked()
 {
     this->close();
@@ -82,13 +92,16 @@ void view_booklist::on_dashButton_clicked()
     this->close();
 }
 
+//Search box
 void view_booklist::on_lineEdit_textChanged(const QString &arg1)
 {
+    //If the line edit is empty
     if(arg1 == "")
         for(int i=0 ; i<ui->tableWidget->rowCount() ; i++)
             ui->tableWidget->showRow(i);
     else
     {
+        //Search in all
         if(ui->comboBox->currentIndex() == 0)
         {
             for(int i=0 ; i<ui->tableWidget->rowCount() ; i++)
@@ -100,6 +113,7 @@ void view_booklist::on_lineEdit_textChanged(const QString &arg1)
             for (int i = 0; i < all.size(); ++i)
                ui->tableWidget->showRow(all.at(i)->row());
         }
+        //Search with other items of combo box
         else
         {
             for(int i=0 ; i<ui->tableWidget->rowCount() ; i++)

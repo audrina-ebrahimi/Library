@@ -16,10 +16,13 @@ admindashboard::admindashboard(QWidget * login , QWidget * main , QWidget *paren
     ui(new Ui::admindashboard)
 {
     ui->setupUi(this);
+
+    //Transfer main and login
     this->qMain = main;
     this->login = login;
 }
 
+//Dragable
 void admindashboard::mousePressEvent(QMouseEvent *event)
 {
     oldPos = event->globalPosition();
@@ -37,6 +40,7 @@ admindashboard::~admindashboard()
     delete ui;
 }
 
+//Close, menu and log out
 void admindashboard::on_closeButton_clicked()
 {
     this->close();
@@ -54,6 +58,7 @@ void admindashboard::on_logoutButton_clicked()
     this->close();
 }
 
+//Enter to Group dash
 void admindashboard::on_groupButton_clicked()
 {
     GroupBooks *group = new GroupBooks(this , qMain);
@@ -63,6 +68,7 @@ void admindashboard::on_groupButton_clicked()
 
 }
 
+//View Books list
 void admindashboard::on_viewBookButton_clicked()
 {
     view_booklist *list = new view_booklist(this , qMain);
@@ -71,6 +77,7 @@ void admindashboard::on_viewBookButton_clicked()
     this->hide();
 }
 
+//View Members
 void admindashboard::on_viewMemButton_clicked()
 {
     viewMember *member = new viewMember(this , qMain);
@@ -79,6 +86,7 @@ void admindashboard::on_viewMemButton_clicked()
     this->hide();
 }
 
+//Add book
 void admindashboard::on_addButton_clicked()
 {
     addBook * add = new addBook(this , qMain);
@@ -88,6 +96,7 @@ void admindashboard::on_addButton_clicked()
 
 }
 
+//Enter to pre edit menu
 void admindashboard::on_editButton_clicked()
 {
     preEdit *pre = new preEdit(this , qMain);
@@ -96,6 +105,7 @@ void admindashboard::on_editButton_clicked()
     this->hide();
 }
 
+//Delete book
 void admindashboard::on_deleteButton_clicked()
 {
     deleteBook * deleteB = new deleteBook(this , qMain);
@@ -104,6 +114,7 @@ void admindashboard::on_deleteButton_clicked()
     this->hide();
 }
 
+//Member situation
 void admindashboard::on_situationButton_clicked()
 {
     situation * condition = new situation(this , qMain);

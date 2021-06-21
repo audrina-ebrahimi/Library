@@ -1,5 +1,6 @@
 #include "book.h"
 
+//Book class
 book::book(QString name , QString author , QString subject , QString publisher , QString ISBN , QString language , int pageNum , int available)
 {
     this->name = name;
@@ -12,6 +13,7 @@ book::book(QString name , QString author , QString subject , QString publisher ,
     this->available = available;
 }
 
+//Getters
 QString book::get_name()
 {
     return this->name;

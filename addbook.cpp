@@ -13,10 +13,13 @@ addBook::addBook(QWidget * dash , QWidget * main , QWidget *parent) :
     ui(new Ui::addBook)
 {
     ui->setupUi(this);
+
+    //Transfer main and dash
     this->qMain = main;
     this->dash = dash;
 }
 
+//Dragable
 void addBook::mousePressEvent(QMouseEvent *event)
 {
     oldPos = event->globalPosition();
@@ -34,6 +37,7 @@ addBook::~addBook()
     delete ui;
 }
 
+//Close, menu and dash
 void addBook::on_closeButton_clicked()
 {
     this->close();
@@ -51,11 +55,14 @@ void addBook::on_dashButton_clicked()
     this->close();
 }
 
+//Add book
 void addBook::on_addButton_clicked()
 {
+    //Fill book class
     book books(ui->nameEdit->text() , ui->authorEdit->text() , ui->subjectEdit->text() , ui->publisherEdit->text() ,
                ui->ISBNEdit->text() , ui->languageEdit->text() , ui->spinPage->value() , ui->spinAvail->value());
 
+    //Read from book file and fill book map
     QFile myfile("F:/Qt/Library/books.txt");
     myfile.open(QIODevice :: ReadWrite);
     QTextStream in(&myfile);
@@ -66,6 +73,7 @@ void addBook::on_addButton_clicked()
     while(!in.atEnd())
     {
        line = in.readLine();
+       //If find the ISBN of book error
        if(line.contains(books.get_ISBN() , Qt :: CaseSensitive))
        {
            QMessageBox found;
@@ -109,6 +117,7 @@ void addBook::on_addButton_clicked()
        }
     }
 
+    //If book was unique
     if(find == false)
     {
         QTextStream out(&myfile);
