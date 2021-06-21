@@ -17,7 +17,7 @@ editBook::editBook(QString isbn , QWidget * dash , QWidget * main , QWidget *par
 
 
     //Read books from file and fill their map
-    QFile myfile("F:/Qt/Library/books.txt");
+    QFile myfile("books.txt");
     myfile.open(QIODevice :: ReadOnly);
     QTextStream in(&myfile);
 
@@ -94,7 +94,7 @@ void editBook::on_pushButton_clicked()
                << ui->languageEdit->text() << ui->spinPage->text() << ui->spinAvail->text();
 
     //Fill the book file
-    QFile myfile("F:/Qt/Library/books.txt");
+    QFile myfile("books.txt");
     myfile.open(QIODevice :: WriteOnly | QIODevice::Text);
     QTextStream out(&myfile);
     for(auto i=book.begin() ; i != book.end() ; i++)
@@ -102,7 +102,7 @@ void editBook::on_pushButton_clicked()
 
     QMessageBox success;
     success.setText("The book has successfully edited. Press \"Ok\" to return to Dashboard");
-    success.setIconPixmap(QPixmap ("F:/Qt/Library/icons/check.png"));
+    success.setIconPixmap(QPixmap (":/icons/icons/check.png"));
     success.setStandardButtons(QMessageBox::Ok);
     success.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
     success.setDefaultButton(QMessageBox::Ok);

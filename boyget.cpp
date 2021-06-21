@@ -31,7 +31,7 @@ void boyGet::load()
     ui->tableWidget->setRowCount(0);
 
     //Read books from file and fill their map
-    QFile myfile("F:/Qt/Library/books.txt");
+    QFile myfile("books.txt");
     myfile.open(QIODevice::Text | QIODevice :: ReadOnly);
     QTextStream in(&myfile);
 
@@ -52,7 +52,7 @@ void boyGet::load()
     myfile.close();
 
     //Read groups from file and fill their map
-    QFile file("F:/Qt/Library/get_return.txt");
+    QFile file("get_return.txt");
     file.open(QIODevice::Text | QIODevice :: ReadOnly);
     QTextStream in1(&file);
 
@@ -159,7 +159,7 @@ void boyGet::on_getButton_clicked()
         get_return.insert(qMakePair(user , isbn) , expiration);
 
         //Add user book to file
-        QFile myfile("F:/Qt/Library/get_return.txt");
+        QFile myfile("get_return.txt");
         myfile.open(QIODevice::Text | QIODevice :: WriteOnly);
         QTextStream out(&myfile);
 
@@ -171,7 +171,7 @@ void boyGet::on_getButton_clicked()
         //Minus 1 from availablity of book
         book[isbn][6] = QString::number(book[isbn].at(6).toInt()-1);
 
-        QFile file("F:/Qt/Library/books.txt");
+        QFile file("books.txt");
         file.open(QIODevice :: WriteOnly | QIODevice::Text);
         QTextStream out2(&file);
         for(auto i=book.begin() ; i != book.end() ; i++)
@@ -181,7 +181,7 @@ void boyGet::on_getButton_clicked()
         QMessageBox success;
         success.setText("This book successfully added to your account.");
 
-        success.setIconPixmap(QPixmap ("F:/Qt/Library/icons/check.png"));
+        success.setIconPixmap(QPixmap (":/icons/icons/check.png"));
         success.setStandardButtons(QMessageBox::Ok);
         success.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
         success.setInformativeText("Caution! you've got this book from \"" + today.toString("yyyyMMMdd") + "\" to \"" + expiration.toString("yyyyMMMdd") +"\"");

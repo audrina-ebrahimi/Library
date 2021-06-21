@@ -37,7 +37,7 @@ void situation::load()
     ui->tableWidget->setRowCount(0);
 
     //Read data from file and fill the map
-    QFile file("F:/Qt/Library/get_return.txt");
+    QFile file("get_return.txt");
     file.open(QIODevice::Text | QIODevice :: ReadOnly);
     QTextStream in1(&file);
 

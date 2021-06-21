@@ -60,7 +60,7 @@ void log_in::on_log_in_Button_clicked()
     person.set_pass( ui->lineEdit_pass->text() );
 
 
-    QFile myfile("F:\\Qt\\Library\\name_pass.txt");
+    QFile myfile("name_pass.txt");
     myfile.open(QIODevice :: ReadOnly);
     QTextStream in(&myfile);
     QString line;

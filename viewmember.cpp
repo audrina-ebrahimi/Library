@@ -28,7 +28,7 @@ void viewMember::update()
     ui->tableWidget->setRowCount(0);
 
     //Read data from file and fill the map
-    QFile myfile("F:/Qt/Library/name_pass.txt");
+    QFile myfile("name_pass.txt");
     myfile.open(QIODevice :: ReadOnly);
     QTextStream in(&myfile);
 
@@ -126,13 +126,31 @@ void viewMember::on_deleteButton_clicked()
     user_pass.remove(hated);
 
     //Fill file with new data
-    QFile myfile("F:/Qt/Library/name_pass.txt");
+    QFile myfile("name_pass.txt");
     myfile.open(QIODevice :: WriteOnly);
     QTextStream out(&myfile);
 
     for(auto i = user_pass.begin() ; i != user_pass.end() ; i++)
         out << i.key() << " " << i.value() << "\n";
 
+
+    QMessageBox success;
+    success.setText("The member successfully deleted");
+    success.setIconPixmap(QPixmap (":/icons/icons/check.png"));
+    success.setStandardButtons(QMessageBox::Ok);
+
+
+
+    success.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
+    success.setDefaultButton(QMessageBox::Ok);
+    success.button(QMessageBox::Ok)->setCursor(Qt::PointingHandCursor);
+
+    success.setStyleSheet("QPushButton{ width:100px; height:30px; background-color: rgb(196,255,3); color: black; border-radius:10px;}"
+
+                       "QPushButton:hover{ background-color: rgb(0, 255, 0);}"
+
+                       "QMessageBox{background-color: rgba(85, 170, 0 , 0.7); font:12pt Tw Cen MT Condensed Extra Bold;}");
+    success.exec();
 
     update();
 }

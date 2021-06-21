@@ -1,3 +1,0 @@
-admin admin
-ff f
-gg g

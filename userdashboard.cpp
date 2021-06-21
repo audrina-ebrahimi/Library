@@ -45,7 +45,7 @@ QString userdashboard::get_user()
 bool userdashboard::expired()
 {
     //Read get and return file and fill its map
-    QFile file("F:/Qt/Library/get_return.txt");
+    QFile file("get_return.txt");
     file.open(QIODevice::Text | QIODevice :: ReadOnly);
     QTextStream in(&file);
 

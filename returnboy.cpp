@@ -39,7 +39,7 @@ void returnBoy::load()
     ui->tableWidget->setRowCount(0);
 
     //Read from file and fill book map
-    QFile myfile("F:/Qt/Library/books.txt");
+    QFile myfile("books.txt");
     myfile.open(QIODevice::Text | QIODevice :: ReadOnly);
     QTextStream in(&myfile);
 
@@ -55,7 +55,7 @@ void returnBoy::load()
     myfile.close();
 
     //Read from file and fill get and return map
-    QFile file("F:/Qt/Library/get_return.txt");
+    QFile file("get_return.txt");
     file.open(QIODevice::Text | QIODevice :: ReadOnly);
     QTextStream in1(&file);
 
@@ -189,7 +189,7 @@ void returnBoy::on_returnButton_clicked()
     get_return.remove(qMakePair(user , isbn));
 
     //Fill the file with new map
-    QFile myfile("F:/Qt/Library/get_return.txt");
+    QFile myfile("get_return.txt");
     myfile.open(QIODevice::Text | QIODevice :: WriteOnly);
     QTextStream out(&myfile);
 
@@ -202,7 +202,7 @@ void returnBoy::on_returnButton_clicked()
     book[isbn][6] = QString::number(book[isbn].at(6).toInt()+1);
 
     //Fill the file with new mao
-    QFile file("F:/Qt/Library/books.txt");
+    QFile file("books.txt");
     file.open(QIODevice :: WriteOnly | QIODevice::Text);
     QTextStream out2(&file);
     for(auto i=book.begin() ; i != book.end() ; i++)
@@ -212,7 +212,7 @@ void returnBoy::on_returnButton_clicked()
     QMessageBox success;
     success.setText("Your book successfuly returned!");
 
-    success.setIconPixmap(QPixmap ("F:/Qt/Library/icons/check.png"));
+    success.setIconPixmap(QPixmap (":/icons/icons/check.png"));
     success.setStandardButtons(QMessageBox::Ok);
     success.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
 

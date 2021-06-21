@@ -63,7 +63,7 @@ void addBook::on_addButton_clicked()
                ui->ISBNEdit->text() , ui->languageEdit->text() , ui->spinPage->value() , ui->spinAvail->value());
 
     //Read from book file and fill book map
-    QFile myfile("F:/Qt/Library/books.txt");
+    QFile myfile("books.txt");
     myfile.open(QIODevice :: ReadWrite);
     QTextStream in(&myfile);
     QString line;
@@ -126,7 +126,7 @@ void addBook::on_addButton_clicked()
         QMessageBox success;
 
         success.setText("The book has successfully added. Press \"Ok\" to return to Dashboard");
-        success.setIconPixmap(QPixmap ("F:/Qt/Library/icons/check.png"));
+        success.setIconPixmap(QPixmap (":/icons/icons/check.png"));
         success.setStandardButtons(QMessageBox::Ok);
         success.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
         success.setDefaultButton(QMessageBox::Ok);

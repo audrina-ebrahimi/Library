@@ -44,7 +44,7 @@ QString boydashboard::get_user()
 //Count user get books
 int boydashboard::get_book_number(QString user)
 {
-    QFile myfile("F:/Qt/Library/get_return.txt");
+    QFile myfile("get_return.txt");
     myfile.open(QIODevice::Text | QIODevice :: ReadOnly);
     QTextStream in(&myfile);
 
@@ -64,7 +64,7 @@ int boydashboard::get_book_number(QString user)
 bool boydashboard::expired()
 {
     //Read get and return file and fill its map
-    QFile file("F:/Qt/Library/get_return.txt");
+    QFile file("get_return.txt");
     file.open(QIODevice::Text | QIODevice :: ReadOnly);
     QTextStream in(&file);
 

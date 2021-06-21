@@ -47,7 +47,7 @@ void editGroup::load()
     ui->tableWidget->setRowCount(0);
 
     //Read from file and fill the book map
-    QFile myfile("F:/Qt/Library/books.txt");
+    QFile myfile("books.txt");
     myfile.open(QIODevice::Text | QIODevice :: ReadOnly);
     QTextStream in(&myfile);
 
@@ -76,7 +76,7 @@ void editGroup::load()
     myfile.close();
 
     //Read from file and fill the groups map
-    QFile file("F:/Qt/Library/group.txt");
+    QFile file("group.txt");
     file.open(QIODevice::Text | QIODevice :: ReadOnly);
     QTextStream in1(&file);
 
@@ -159,7 +159,7 @@ void editGroup::on_editButton_clicked()
         groups.insert(groupName , isbn);
 
         //Fill the file with groups map
-        QFile file("F:/Qt/Library/group.txt");
+        QFile file("group.txt");
         file.open(QIODevice::Text | QIODevice :: WriteOnly);
         QTextStream out(&file);
 
@@ -168,7 +168,7 @@ void editGroup::on_editButton_clicked()
 
         QMessageBox success;
         success.setText("This group edited successfully.\nPress \"Ok\" to return to Group Dashboard.");
-        success.setIconPixmap(QPixmap ("F:/Qt/Library/icons/check.png"));
+        success.setIconPixmap(QPixmap (":/icons/icons/check.png"));
         success.setStandardButtons(QMessageBox::Ok);
         success.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
         success.setDefaultButton(QMessageBox::Ok);

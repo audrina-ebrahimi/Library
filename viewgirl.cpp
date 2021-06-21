@@ -37,7 +37,7 @@ void viewgirl::load()
     ui->tableWidget->setRowCount(0);
 
     //Read data from file and fill book map
-    QFile myfile("F:/Qt/Library/books.txt");
+    QFile myfile("books.txt");
     myfile.open(QIODevice::Text | QIODevice :: ReadOnly);
     QTextStream in(&myfile);
 

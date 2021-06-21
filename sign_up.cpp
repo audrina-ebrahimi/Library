@@ -60,7 +60,7 @@ void sign_up::on_sign_up_Button_clicked()
 
 
     //Read file
-    QFile myfile("F:\\Qt\\Library\\name_pass.txt");
+    QFile myfile("name_pass.txt");
     myfile.open(QIODevice :: ReadOnly);
     QTextStream in(&myfile);
     QString line;
@@ -104,7 +104,7 @@ void sign_up::on_sign_up_Button_clicked()
     {
 
         //Add user to file
-        QFile file("F:\\Qt\\Library\\name_pass.txt");
+        QFile file("name_pass.txt");
         file.open(QIODevice :: Append);
         QTextStream out(&file);
         out << person;
@@ -115,7 +115,7 @@ void sign_up::on_sign_up_Button_clicked()
         QMessageBox success;
         success.setText("Thank you for signing up. Press \"OK\" to go to \"LOG IN\" form.");
 
-        success.setIconPixmap(QPixmap ("F:/Qt/Library/icons/check.png"));
+        success.setIconPixmap(QPixmap (":/icons/icons/check.png"));
 
 
         success.setStandardButtons(QMessageBox::Ok);
