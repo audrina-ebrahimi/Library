@@ -1,0 +1,30 @@
+<RCC>
+    <qresource prefix="/new/photos">
+        <file>bookshelves.jpg</file>
+        <file>gates.jpg</file>
+        <file>choose.jpg</file>
+        <file>admin.jpg</file>
+        <file>girlDash.jpg</file>
+        <file>boydash.jpg</file>
+        <file>viewadmin.jpg</file>
+        <file>boyview.jpg</file>
+        <file>girlview.jpg</file>
+        <file>memberview.jpg</file>
+        <file>addGroup.jpg</file>
+        <file>addBook.jpg</file>
+        <file>editBook.jpg</file>
+        <file>getGirl.jpg</file>
+        <file>boyGet.jpg</file>
+        <file>returnGirl.jpg</file>
+        <file>returnboy.jpg</file>
+        <file>closegirl.jpg</file>
+        <file>closeboy.jpg</file>
+        <file>editGroup.jpg</file>
+        <file>welcome.jpg</file>
+        <file>groupadmin.jpg</file>
+        <file>situation.jpg</file>
+        <file>deletebook.jpg</file>
+        <file>preedit.jpg</file>
+    </qresource>
+    <qresource prefix="/"/>
+</RCC>

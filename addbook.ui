@@ -71,7 +71,7 @@ QLineEdit
     </property>
     <property name="font">
      <font>
-      <pointsize>10</pointsize>
+      <pointsize>14</pointsize>
       <weight>75</weight>
       <italic>true</italic>
       <bold>true</bold>
@@ -79,6 +79,9 @@ QLineEdit
     </property>
     <property name="text">
      <string>Book Name:</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
     <property name="margin">
      <number>10</number>

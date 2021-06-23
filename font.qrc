@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/font">
+        <file>font/Mj_Parand.ttf</file>
+        <file>font/SEGOEUI.TTF</file>
+        <file>font/SNAP____.TTF</file>
+        <file>font/TCCEB.TTF</file>
+    </qresource>
+</RCC>

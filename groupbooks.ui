@@ -32,7 +32,7 @@
   <property name="styleSheet">
    <string notr="true">#centralwidget
 {
-	border-image: url(:/new/photos/groupadmin.png);
+	border-image: url(:/new/photos/groupadmin.jpg);
 }
 
 QPushButton

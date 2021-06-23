@@ -130,7 +130,7 @@ void sign_up::on_sign_up_Button_clicked()
                            "QMessageBox{background-color: rgba(255,183,0,0.7);font:12pt Tw Cen MT Condensed Extra Bold;}");
         if(success.exec() == QMessageBox::Ok)
         {
-                log_in * log = new log_in(this);
+                log_in * log = new log_in(qMain);
                 log->setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
                 log->show();
                 this->close();
