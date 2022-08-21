@@ -103,7 +103,7 @@ void viewMember::on_deleteButton_clicked()
     if(hated == "admin")
     {
         QMessageBox warn;
-        warn.setText("Detective Dush! You are just about to delete yourself \"OSKOL!\" :/");
+        warn.setText("Oh oh! You are just about to delete yourself!");
         warn.setIcon(QMessageBox :: Critical);
         warn.setStandardButtons(QMessageBox::Ok);
 
@@ -135,7 +135,7 @@ void viewMember::on_deleteButton_clicked()
 
 
     QMessageBox success;
-    success.setText("The member successfully deleted");
+    success.setText("The member is successfully deleted");
     success.setIconPixmap(QPixmap (":/icons/icons/check.png"));
     success.setStandardButtons(QMessageBox::Ok);
 

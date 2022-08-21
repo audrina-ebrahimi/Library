@@ -125,7 +125,7 @@ void addBook::on_addButton_clicked()
         myfile.close();
         QMessageBox success;
 
-        success.setText("The book has successfully added. Press \"Ok\" to return to Dashboard");
+        success.setText("The book is successfully added. Press \"Ok\" to return to Dashboard");
         success.setIconPixmap(QPixmap (":/icons/icons/check.png"));
         success.setStandardButtons(QMessageBox::Ok);
         success.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);

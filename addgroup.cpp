@@ -152,7 +152,7 @@ void AddGroup::on_addButton_clicked()
             out << i.key() << " " << i.value().join(" ") << "\n";
 
         QMessageBox success;
-        success.setText("This group added successfully.");
+        success.setText("This group is successfully added.");
         success.setIconPixmap(QPixmap (":/icons/icons/check.png"));
         success.setStandardButtons(QMessageBox::Ok);
         success.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);

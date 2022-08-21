@@ -101,7 +101,7 @@ void editBook::on_pushButton_clicked()
         out << i.key() << " " << i.value().join(" ") << "\n";
 
     QMessageBox success;
-    success.setText("The book has successfully edited. Press \"Ok\" to return to Dashboard");
+    success.setText("The book is successfully edited. Press \"Ok\" to return to Dashboard");
     success.setIconPixmap(QPixmap (":/icons/icons/check.png"));
     success.setStandardButtons(QMessageBox::Ok);
     success.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);

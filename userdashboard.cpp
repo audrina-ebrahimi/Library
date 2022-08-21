@@ -103,7 +103,7 @@ void userdashboard::on_listButton_clicked()
     if(expired())
     {
         QMessageBox expiration;
-        expiration.setText("You can't get another book or do anything until returning the expired book you've got! Shame on you!!\nReturn this ASAP!\nPress \"Ok\" to go to return form.");
+        expiration.setText("You can't get another book or do anything until returning the expired book you've got!\nPress \"Ok\" to go to the return form.");
         expiration.setIcon(QMessageBox :: Critical);
         expiration.setStandardButtons(QMessageBox::Ok);
         expiration.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
@@ -137,7 +137,7 @@ void userdashboard::on_listButton_clicked()
 void userdashboard::on_pushButton_clicked()
 {
     QMessageBox success;
-    success.setText("In an Islamic country? Shame on you!!\nThis item is not available in your country. Astaghfirullah!!\nPress \"Ok\" to return to Dashboard");
+    success.setText("This item is not available in your country.\nPress \"Ok\" to return to the Dashboard");
     success.setIcon(QMessageBox :: Critical);
     success.setStandardButtons(QMessageBox::Ok);
     success.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
@@ -160,7 +160,7 @@ void userdashboard::on_getButton_clicked()
     if(boydashboard :: get_book_number(user) == 5)
     {
         QMessageBox limit;
-        limit.setText("You've already got 5 books in your hand. Shame on you!!\nGet them back!!!!\nPress \"Ok\" to go to return form.");
+        limit.setText("You've already got 5 books in your hand.\nYou can\'t get another book\nPress \"Ok\" to go to the return form.");
         limit.setIcon(QMessageBox :: Critical);
         limit.setStandardButtons(QMessageBox::Ok);
         limit.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
@@ -186,7 +186,7 @@ void userdashboard::on_getButton_clicked()
     else if(expired())
     {
         QMessageBox expiration;
-        expiration.setText("You can't get another book or do anything until returning the expired book you've got! Shame on you!!\nReturn this ASAP!\nPress \"Ok\" to go to return form.");
+        expiration.setText("You can't get another book or do anything until returning the expired book you've got!\nPress \"Ok\" to go to the return form.");
         expiration.setIcon(QMessageBox :: Critical);
         expiration.setStandardButtons(QMessageBox::Ok);
         expiration.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);

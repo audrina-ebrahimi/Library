@@ -167,7 +167,7 @@ void editGroup::on_editButton_clicked()
             out << i.key() << " " << i.value().join(" ") << "\n";
 
         QMessageBox success;
-        success.setText("This group edited successfully.\nPress \"Ok\" to return to Group Dashboard.");
+        success.setText("This group is successfully edited.\nPress \"Ok\" to return to Group Dashboard.");
         success.setIconPixmap(QPixmap (":/icons/icons/check.png"));
         success.setStandardButtons(QMessageBox::Ok);
         success.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);

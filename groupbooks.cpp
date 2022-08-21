@@ -236,7 +236,7 @@ void GroupBooks::on_deteleButton_clicked()
             out << i.key() << " " << i.value().join(" ") << "\n";
 
         QMessageBox success;
-        success.setText("This group deleted successfully.\nPress \"Refresh List\" to refresh the group table.");
+        success.setText("This group is successfully deleted.\nPress \"Refresh List\" to refresh the group table.");
         success.setIconPixmap(QPixmap (":/icons/icons/check.png"));
         success.setStandardButtons(QMessageBox::Ok);
         success.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);

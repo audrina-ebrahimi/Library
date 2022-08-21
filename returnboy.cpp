@@ -210,7 +210,7 @@ void returnBoy::on_returnButton_clicked()
     file.close();
 
     QMessageBox success;
-    success.setText("Your book successfuly returned!");
+    success.setText("Your book is successfuly returned!");
 
     success.setIconPixmap(QPixmap (":/icons/icons/check.png"));
     success.setStandardButtons(QMessageBox::Ok);

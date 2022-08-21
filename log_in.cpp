@@ -98,7 +98,7 @@ void log_in::on_log_in_Button_clicked()
         else if(line.contains(person.get_name() , Qt :: CaseSensitive))
         {
             QMessageBox warn;
-            warn.setText("The password you you entered is wrong.");
+            warn.setText("The password you entered is wrong.");
             warn.setIcon(QMessageBox :: Critical);
             warn.setStandardButtons(QMessageBox::Ok);
 
@@ -127,7 +127,7 @@ void log_in::on_log_in_Button_clicked()
     {
 
         QMessageBox failed;
-        failed.setText("Couldn't find the username you entered. Press \"OK\" to go to \"SIGN UP\" form.");
+        failed.setText("Couldn't find the username you entered. Press \"OK\" to go to the \"Signup\" form.");
 
         failed.setIcon(QMessageBox :: Critical);
         failed.setStandardButtons(QMessageBox::Ok);

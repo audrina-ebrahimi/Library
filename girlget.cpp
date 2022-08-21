@@ -126,7 +126,7 @@ void girlGet::on_getButton_clicked()
     if(boydashboard :: get_book_number(user) == 5)
     {
         QMessageBox limit;
-        limit.setText("You've already got 5 books in your hand. Shame on you!!\nGet them back!!!!\nPress \"Ok\" to go to return form.");
+        limit.setText("You've already got 5 books in your hand.\nYou can\'t get another book\nPress \"Ok\" to go to the return form.");
         limit.setIcon(QMessageBox :: Critical);
         limit.setStandardButtons(QMessageBox::Ok);
         limit.setWindowFlags(Qt::Window | Qt::FramelessWindowHint);
@@ -185,7 +185,7 @@ void girlGet::on_getButton_clicked()
         file.close();
 
         QMessageBox success;
-        success.setText("This book successfully added to your account.");
+        success.setText("This book is successfully added to your account.");
 
         success.setIconPixmap(QPixmap ("F:/Qt/Library/icons/check.png"));
         success.setStandardButtons(QMessageBox::Ok);

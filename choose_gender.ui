@@ -80,14 +80,13 @@ QPushButton:hover
      <rect>
       <x>330</x>
       <y>500</y>
-      <width>91</width>
+      <width>71</width>
       <height>41</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <pointsize>11</pointsize>
-      <weight>75</weight>
       <italic>true</italic>
       <bold>true</bold>
       <strikeout>false</strikeout>
@@ -97,7 +96,7 @@ QPushButton:hover
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="text">
-     <string>HOT GIRL</string>
+     <string>GIRL</string>
     </property>
    </widget>
    <widget class="QRadioButton" name="boy_Button">
@@ -105,14 +104,13 @@ QPushButton:hover
      <rect>
       <x>830</x>
       <y>500</y>
-      <width>91</width>
+      <width>71</width>
       <height>41</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <pointsize>11</pointsize>
-      <weight>75</weight>
       <italic>true</italic>
       <bold>true</bold>
      </font>
@@ -121,7 +119,7 @@ QPushButton:hover
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="text">
-     <string>HOT BOY</string>
+     <string>BOY</string>
     </property>
    </widget>
    <widget class="QPushButton" name="closeButton">

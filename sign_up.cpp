@@ -74,7 +74,7 @@ void sign_up::on_sign_up_Button_clicked()
         if(line.contains(person.get_name() , Qt :: CaseSensitive))
         {
             QMessageBox warn;
-            warn.setText("The username you chose already exsist. Please pick another one.");
+            warn.setText("The username you chose already exsists. Please pick another one.");
             warn.setIcon(QMessageBox :: Critical);
             warn.setStandardButtons(QMessageBox::Ok);
 
@@ -113,7 +113,7 @@ void sign_up::on_sign_up_Button_clicked()
 
 
         QMessageBox success;
-        success.setText("Thank you for signing up. Press \"OK\" to go to \"LOG IN\" form.");
+        success.setText("Thank you for signing up. Press \"OK\" to go to \"Login\" form.");
 
         success.setIconPixmap(QPixmap (":/icons/icons/check.png"));
 

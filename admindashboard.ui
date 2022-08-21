@@ -238,7 +238,7 @@ QPushButton:hover
      <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="text">
-     <string>Member situation</string>
+     <string>Members situation</string>
     </property>
    </widget>
   </widget>

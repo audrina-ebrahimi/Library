@@ -194,7 +194,7 @@ border: 3px solid rgb(127, 0, 191);</string>
      <string notr="true">border: 3px solid rgb(127, 0, 191);</string>
     </property>
     <property name="text">
-     <string>Private Room :)</string>
+     <string>Private Room</string>
     </property>
    </widget>
    <widget class="QPushButton" name="returnButton">
