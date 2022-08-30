@@ -39,7 +39,7 @@ void viewboy::load()
     ui->tableWidget->setRowCount(0);
 
     //Read data from file and fill the map
-    QFile myfile("/books.txt");
+    QFile myfile("books.txt");
     myfile.open(QIODevice::Text | QIODevice :: ReadOnly);
     QTextStream in(&myfile);
 
